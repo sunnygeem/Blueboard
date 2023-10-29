@@ -1,76 +1,80 @@
 package com.se.blueboard;
 
+import android.content.Intent;
 import android.os.Bundle;
-
-import com.google.android.material.snackbar.Snackbar;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.View;
-
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
-import com.se.blueboard.databinding.ActivityMainBinding;
-
-import android.view.Menu;
-import android.view.MenuItem;
-
 public class MainActivity extends AppCompatActivity {
-
-    private AppBarConfiguration appBarConfiguration;
-    private ActivityMainBinding binding;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // main screen (9 buttons)
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
-        setSupportActionBar(binding.toolbar);
-
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-
-        binding.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
+        // Login button
+        Button loginButton = findViewById(R.id.login);
+        loginButton.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), Login.class);
+            startActivity(intent);
         });
-    }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
+        // Announcement button
+        Button announcementButton = findViewById(R.id.announcement);
+        announcementButton.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), Announcement.class);
+            startActivity(intent);
+        });
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        // Attendance button
+        Button attendanceButton = findViewById(R.id.attendance);
+        attendanceButton.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), Attendance.class);
+            startActivity(intent);
+        });
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        // Contents button
+        Button contentsButton = findViewById(R.id.contents);
+        contentsButton.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), Contents.class);
+            startActivity(intent);
+        });
 
-        return super.onOptionsItemSelected(item);
-    }
+        // Groups button
+        Button groupsButton = findViewById(R.id.groups);
+        groupsButton.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), Groups.class);
+            startActivity(intent);
+        });
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();
+        // Home button
+        Button homeButton = findViewById(R.id.home);
+        homeButton.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), Home.class);
+            startActivity(intent);
+        });
+
+        // Lecture button
+        Button lectureButton = findViewById(R.id.lecture);
+        lectureButton.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), Lecture.class);
+            startActivity(intent);
+        });
+
+        // Message button
+        Button messageButton = findViewById(R.id.message);
+        messageButton.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), Message.class);
+            startActivity(intent);
+        });
+
+        // Profile button
+        Button profileButton = findViewById(R.id.profile);
+        profileButton.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), Profile.class);
+            startActivity(intent);
+        });
+
     }
 }
