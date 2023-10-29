@@ -69,4 +69,11 @@
         android:layout_marginHorizontal="70dp"
         android:text="9. lecture" />
 
+    <Button
+        android:id="@+id/firestore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="70dp"
+        android:text="Firestore Test" />
+
 </LinearLayout>
