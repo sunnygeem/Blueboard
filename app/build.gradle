@@ -6,7 +6,7 @@ plugins {
 
 android {
     compileSdk 34
-
+    //
     defaultConfig {
         applicationId "com.se.blueboard"
         minSdk 26
