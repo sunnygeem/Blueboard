@@ -1,37 +1,45 @@
 package utils;
 
 public class DB implements Database{
-    static DB makeDB(){
+    public static DB makeDB(){
         // named constructor
         // TODO: implement
         return new DB();
     }
-    boolean connectDB(){
+    public boolean connectDB(){
         // TODO: implement
+        return true;
     }
-    boolean disconnectDB(){
+    public boolean disconnectDB(){
         // TODO: implement
+        return true;
     }
-    boolean addData(){
+    public boolean addData(){
         // 데이터를 처음 추가할 때
         // TODO: implement
+        return true;
     }
-    boolean updateData(){
+    public boolean updateData(){
         // 이미 존재하는 데이터를 업데이트할 때
         // TODO: implement
+        return true;
     }
-    boolean loadData(){
+    public boolean loadData(){
         // DB에서 데이터를 가져와서 해당하는 class의 변수를 return
         // TODO: implement
+        return true;
     }
-    boolean deleteData(){
+    public boolean deleteData(){
         // TODO: implement
+        return true;
     }
-    boolean uploadFIle(){
+    public boolean uploadFIle(){
         // firebase의 storage에 파일을 저장하고 그 파일들의 정보를 firestore에 저장
         // TODO: implement
+        return true;
     }
-    boolean downloadFile(){
+    public boolean downloadFile(){
         // firebase의 storage에서 파일을 다운로드
         // TODO: implement
-}
+        return true;
+    }
