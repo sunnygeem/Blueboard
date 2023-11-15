@@ -1,16 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center">
 
     <TextView
-        android:id="@+id/textview1"
+        android:id="@+id/lecture_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="18dp"
+        android:padding="5dp"
+        android:text="Lecture Contents"
+        android:textSize="36sp"
+        android:textColor="#0A0B0B"
+        android:fontFamily="@font/palanquindark_regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="7px"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="18dp"
+        android:background="#F3F3F3"
+        app:layout_constraintEnd_toEndOf="@+id/lecture_header"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/lecture_header"
+        app:layout_constraintTop_toBottomOf="@+id/lecture_header" />
+
+    <ToggleButton
+        android:id="@+id/weeks_button"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Contents with sheepbelldoor" />
+        android:layout_marginLeft="28dp"
+        android:textOn="모든 주차 닫기"
+        android:textOff="모든 주차 열기"
+        android:textColor="#0478FF"
+        android:textSize="16sp"
+        android:fontFamily="@font/palanquin_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
 
-</LinearLayout>
+    <Button
+        android:id="@+id/attendance_button"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="28dp"
+        android:text="출결/학습 현황"
+        android:textColor="#0478FF"
+        android:textSize="16sp"
+        android:background="#FFFFFF"
+        android:fontFamily="@font/palanquin_regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/view2"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="1px"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        android:background="#FFFFFF"-->
+<!--        android:layout_marginTop="50dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/view" />-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/lectureContents_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintWidth="match_parent"
+        app:layout_constraintHeight="match_constraint"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weeks_button"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
