@@ -5,19 +5,15 @@ import static android.content.ContentValues.TAG;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.Firebase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.SetOptions;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -57,63 +53,63 @@ public class MainActivity extends AppCompatActivity {
         // Login button
         Button loginButton = findViewById(R.id.login);
         loginButton.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), Login.class);
+            Intent intent = new Intent(getApplicationContext(), LoginPage.class);
             startActivity(intent);
         });
 
         // Announcement button
         Button announcementButton = findViewById(R.id.announcement);
         announcementButton.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), Announcement.class);
+            Intent intent = new Intent(getApplicationContext(), AnnouncementPage.class);
             startActivity(intent);
         });
 
         // Attendance button
         Button attendanceButton = findViewById(R.id.attendance);
         attendanceButton.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), Attendance.class);
+            Intent intent = new Intent(getApplicationContext(), AttendancePage.class);
             startActivity(intent);
         });
 
         // Contents button
         Button contentsButton = findViewById(R.id.contents);
         contentsButton.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), Contents.class);
+            Intent intent = new Intent(getApplicationContext(), ContentsPage.class);
             startActivity(intent);
         });
 
         // Groups button
         Button groupsButton = findViewById(R.id.groups);
         groupsButton.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), Groups.class);
+            Intent intent = new Intent(getApplicationContext(), GroupsPage.class);
             startActivity(intent);
         });
 
         // Home button
         Button homeButton = findViewById(R.id.home);
         homeButton.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), Home.class);
+            Intent intent = new Intent(getApplicationContext(), HomePage.class);
             startActivity(intent);
         });
 
         // Lecture button
         Button lectureButton = findViewById(R.id.lecture);
         lectureButton.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), Lecture.class);
+            Intent intent = new Intent(getApplicationContext(), LecturePage.class);
             startActivity(intent);
         });
 
         // Message button
         Button messageButton = findViewById(R.id.message);
         messageButton.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), Message.class);
+            Intent intent = new Intent(getApplicationContext(), MessagePage.class);
             startActivity(intent);
         });
 
         // Profile button
         Button profileButton = findViewById(R.id.profile);
         profileButton.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), Profile.class);
+            Intent intent = new Intent(getApplicationContext(), ProfilePage.class);
             startActivity(intent);
         });
 
