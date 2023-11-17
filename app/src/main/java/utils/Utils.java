@@ -24,22 +24,12 @@ public class Utils implements Utilities {
         return new Utils();
     }
 
-<<<<<<< HEAD
-    public boolean isAdmin() {
-=======
     public boolean isAdmin(User user) {
->>>>>>> refs/remotes/origin/main
         // 관리자인지 확인
         // TODO: implement
         return true;
     }
 
-<<<<<<< HEAD
-    public boolean fileAvail() {
-        // 업로드 가능한 파일인지(크기, 포맷)
-        // TODO: implement
-        return true;
-=======
     public boolean fileAvail(File file, long sizeLimit, List<String> formats) {
         // 업로드 가능한 파일인지(크기, 포맷)
         // 파일 선택하고 Uri, File로 바꾸는 과정 : https://stickode.tistory.com/922
@@ -54,20 +44,10 @@ public class Utils implements Utilities {
 
         if (fileSize > sizeLimit || !formats.contains(fileFormat)) return false;
         else return true;
->>>>>>> refs/remotes/origin/main
     }
 
     public boolean lengthAvail(String str, int length) {
         // 입력 받은 문자열 길이 체크, 문자열과 함께 길이를 argument로 제공
-<<<<<<< HEAD
-        // TODO: implement
-        return str.length() <= length;
-    }
-
-    public void sortBy() {
-        // 정렬
-        // TODO: implement
-=======
         return str != null && str.length() <= length;
     }
 
@@ -82,7 +62,6 @@ public class Utils implements Utilities {
         // debug
 //        else
 //            System.out.println("Invalid param order");
->>>>>>> refs/remotes/origin/main
     }
 
     public void filterBy() {
@@ -103,10 +82,7 @@ public class Utils implements Utilities {
     public void showErrMsg(String errorMessage) {
         // 에러 메시지 출력
         // TODO: implement
-<<<<<<< HEAD
-=======
 
->>>>>>> refs/remotes/origin/main
     }
 
     public void pushAlarm() {
@@ -116,10 +92,6 @@ public class Utils implements Utilities {
 
     public String masking(String personalInfo) {
         // 개인정보 마스킹
-<<<<<<< HEAD
-        // TODO: implement
-        return "masked info"; // 마스킹된 정보 반환
-=======
         // 홍길동 -> 홍*동
         // 0123456789 -> 01*****789
         // TODO: implement
@@ -143,7 +115,6 @@ public class Utils implements Utilities {
                 + personalInfo.substring(length-end, length);
 
         return maskedString;//마스킹된 정보 반환
->>>>>>> refs/remotes/origin/main
     }
 
     public void pagination() {
