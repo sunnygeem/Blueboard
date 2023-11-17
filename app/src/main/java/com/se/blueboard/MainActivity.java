@@ -18,6 +18,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
+import utils.Utils;
+
 public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,64 +55,57 @@ public class MainActivity extends AppCompatActivity {
         // Login button
         Button loginButton = findViewById(R.id.login);
         loginButton.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), LoginPage.class);
-            startActivity(intent);
+            Utils.gotoPage(getApplicationContext(), LoginPage.class);
+            
         });
 
         // Announcement button
         Button announcementButton = findViewById(R.id.announcement);
         announcementButton.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), AnnouncementPage.class);
-            startActivity(intent);
+            Utils.gotoPage(getApplicationContext(), AnnouncementPage.class);
+            
         });
 
         // Attendance button
         Button attendanceButton = findViewById(R.id.attendance);
         attendanceButton.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), AttendancePage.class);
-            startActivity(intent);
+            Utils.gotoPage(getApplicationContext(), AttendancePage.class);
         });
 
         // Contents button
         Button contentsButton = findViewById(R.id.contents);
         contentsButton.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), ContentsPage.class);
-            startActivity(intent);
+            Utils.gotoPage(getApplicationContext(), ContentsPage.class);
         });
 
         // Groups button
         Button groupsButton = findViewById(R.id.groups);
         groupsButton.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), GroupsPage.class);
-            startActivity(intent);
+            Utils.gotoPage(getApplicationContext(), GroupsPage.class);
         });
 
         // Home button
         Button homeButton = findViewById(R.id.home);
         homeButton.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), HomePage.class);
-            startActivity(intent);
+            Utils.gotoPage(getApplicationContext(), HomePage.class);
         });
 
         // Lecture button
         Button lectureButton = findViewById(R.id.lecture);
         lectureButton.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), LecturePage.class);
-            startActivity(intent);
+            Utils.gotoPage(getApplicationContext(), LecturePage.class);
         });
 
         // Message button
         Button messageButton = findViewById(R.id.message);
         messageButton.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), MessagePage.class);
-            startActivity(intent);
+            Utils.gotoPage(getApplicationContext(), MessagePage.class);
         });
 
         // Profile button
         Button profileButton = findViewById(R.id.profile);
         profileButton.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), ProfilePage.class);
-            startActivity(intent);
+            Utils.gotoPage(getApplicationContext(), ProfilePage.class);
         });
 
     }
