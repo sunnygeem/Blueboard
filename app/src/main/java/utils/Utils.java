@@ -5,12 +5,16 @@ import android.widget.Toast;
 
 
 import java.io.File;
+import java.util.Collections;
 import java.util.List;
 
 import model.Account;
 import model.User;
 
 public class Utils implements Utilities {
+    public enum Sort{
+        ASCENDING, DESCENDING
+    }
     public static void toastTest(Context context, String text) {
         Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
     }
@@ -47,9 +51,17 @@ public class Utils implements Utilities {
         return str != null && str.length() <= length;
     }
 
-    public void sortBy() {
-        // 정렬
-        // TODO: implement
+    // order가 ASCENDING이면 list 오름차순 정렬, DESCENDING이면 list 내림차순 정렬
+    // 이외에는 아무것도 하지 않음
+    public void sortBy(List<String> list, Sort order) {
+        if (order == Sort.ASCENDING)
+            Collections.sort(list);
+        else if (order == Sort.DESCENDING)
+            Collections.sort(list, Collections.reverseOrder());
+
+        // debug
+//        else
+//            System.out.println("Invalid param order");
     }
 
     public void filterBy() {
