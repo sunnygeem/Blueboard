@@ -9,7 +9,7 @@ public interface Utilities {
     boolean isAdmin(User user);
     boolean fileAvail(File file, long sizeLimit, List<String> formats);
     boolean lengthAvail(String str, int length);
-    void sortBy();
+    void sortBy(List<String> list, Utils.Sort order);
     void filterBy();
     void search(String attribute, String searchString);
     void gotoPage(String page);
