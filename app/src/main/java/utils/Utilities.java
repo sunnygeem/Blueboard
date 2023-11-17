@@ -1,10 +1,15 @@
 package utils;
 
+import java.io.File;
+import java.util.List;
+
+import model.User;
+
 public interface Utilities {
-    boolean isAdmin();
-    boolean fileAvail();
+    boolean isAdmin(User user);
+    boolean fileAvail(File file, long sizeLimit, List<String> formats);
     boolean lengthAvail(String str, int length);
-    void sortBy();
+    void sortBy(List<String> list, Utils.Sort order);
     void filterBy();
     void search(String attribute, String searchString);
     void gotoPage(String page);
