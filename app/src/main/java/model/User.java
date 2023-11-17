@@ -80,5 +80,9 @@ public class User {
         // TODO: implement
         return null;
     }
+
+    public String getAccountId(){
+        return this.accountId;
+    }
 }
 
