@@ -44,8 +44,7 @@ public class Utils implements Utilities {
 
     public boolean lengthAvail(String str, int length) {
         // 입력 받은 문자열 길이 체크, 문자열과 함께 길이를 argument로 제공
-        // TODO: implement
-        return str.length() <= length;
+        return str != null && str.length() <= length;
     }
 
     public void sortBy() {
