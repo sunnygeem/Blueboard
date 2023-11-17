@@ -80,5 +80,12 @@ public class User {
         // TODO: implement
         return null;
     }
+<<<<<<< HEAD
+=======
+
+    public String getAccountId(){
+        return this.accountId;
+    }
+>>>>>>> refs/remotes/origin/main
 }
 
