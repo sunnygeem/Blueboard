@@ -17,5 +17,16 @@ public class Institution {
         // TODO: implement
         return new Institution(null, null);
     }
+
+    // Methods (If additional methods are needed for Institution, add them here)
+
+    // getter
+    public String getInstitution() {
+        return institution;
+    }
+
+    public String getMajor() {
+        return major;
+    }
 }
 

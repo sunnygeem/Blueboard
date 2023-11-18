@@ -27,5 +27,18 @@ public class Assignment extends LectureContent {
     }
 
     // Methods (If additional methods are needed for Assignment, add them here)
+
+    // getter
+    public Date getUploadTime() {
+        return uploadTime;
+    }
+
+    public Date getDeadline() {
+        return deadline;
+    }
+
+    public List<String> getSubmissions() {
+        return submissions;
+    }
 }
 
