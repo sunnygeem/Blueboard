@@ -42,5 +42,34 @@ public class Comment {
         // 댓글 리스트에서 삭제
         // TODO: implement
     }
+
+    // getter
+    public String getId() {
+        return id;
+    }
+
+    public String getWriter() {
+        return writer;
+    }
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public Date getUploadTime() {
+        return uploadTime;
+    }
+
+    public List<String> getFiles() {
+        return files;
+    }
+
+    public String getRootPost() {
+        return rootPost;
+    }
+
+    public List<String> getComments() {
+        return comments;
+    }
 }
 

@@ -32,5 +32,34 @@ public class Alarm {
     }
 
     // Methods (If additional methods are needed for Alarm, add them here)
+
+    // getter
+    public String getId() {
+        return id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getReceiverId() {
+        return receiverId;
+    }
+
+    public String getSenderId() {
+        return senderId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public Date getDate() {
+        return date;
+    }
 }
 

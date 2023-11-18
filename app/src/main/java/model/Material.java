@@ -23,5 +23,10 @@ public class Material extends LectureContent {
     }
 
     // Methods (If additional methods are needed for Material, add them here)
+
+    // getter
+    public Date getUploadTime() {
+        return uploadTime;
+    }
 }
 

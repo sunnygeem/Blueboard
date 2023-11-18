@@ -63,5 +63,42 @@ public class Message {
         // 첨부파일 로컬 장치에 저장
         // TODO: implement
     }
+
+    // getter
+    public String getId() {
+        return id;
+    }
+
+    public String getReceiverId() {
+        return receiverId;
+    }
+
+    public String getSenderId() {
+        return senderId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public List<String> getReplies() {
+        return replies;
+    }
+
+    public List<String> getFiles() {
+        return files;
+    }
+
+    public boolean getIsRead() {
+        return isRead;
+    }
 }
 
