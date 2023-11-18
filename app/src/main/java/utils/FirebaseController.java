@@ -11,6 +11,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
+import model.Account;
 import model.User;
 
 public class FirebaseController {
