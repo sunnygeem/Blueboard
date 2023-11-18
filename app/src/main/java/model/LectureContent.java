@@ -42,5 +42,34 @@ public class LectureContent {
         // content 삭제
         // TODO: implement
     }
+
+    // getter
+    public String getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public int getWeek() {
+        return week;
+    }
+
+    public Date getDeadline() {
+        return deadline;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public List<String> getFiles() {
+        return files;
+    }
+
+    public String getDetail() {
+        return detail;
+    }
 }
 

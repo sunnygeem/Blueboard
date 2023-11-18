@@ -59,5 +59,26 @@ public class Account {
         // TODO: implement
         return false; // 올바른 pw 형식일 경우 true, 그렇지 않을 경우 false 반환
     }
+
+    // getter
+    public String getId() {
+        return id;
+    }
+
+    public String getAccountId() {
+        return accountId;
+    }
+
+    public String getAccountPw() {
+        return accountPw;
+    }
+
+    public boolean isManager() {
+        return isManager;
+    }
+
+    public int getLoginFail() {
+        return loginFail;
+    }
 }
 

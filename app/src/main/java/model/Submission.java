@@ -29,5 +29,22 @@ public class Submission {
         // Assignment나 Exam 클래스의 submission list에 추가함
         // TODO: implement
     }
+
+    // getter
+    public String getId() {
+        return id;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Date getDate() {
+        return date;
+    }
 }
 

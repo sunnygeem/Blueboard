@@ -31,5 +31,30 @@ public class Announcement {
     }
 
     // Methods (If additional methods are needed for Announcement, add them here)
+
+    // getter
+    public String getId() {
+        return id;
+    }
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public Date getUploadTime() {
+        return uploadTime;
+    }
+
+    public List<String> getFiles() {
+        return files;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public List<String> getComments() {
+        return comments;
+    }
 }
 
