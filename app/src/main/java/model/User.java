@@ -18,10 +18,11 @@ public class User {
     private long studentId;
 
     // Constructor
-    private User(String id, String accountId, String name, String institution,
-                 String major, String email, String profile, List<String> courses,
-                 List<String> sentMessages, List<String> receivedMessages,
-                 List<String> alarms, int grade, long studentId) {
+    // Firebase test 위해서 public으로 임시변경
+    public User(String id, String accountId, String name, String institution,
+                String major, String email, String profile, List<String> courses,
+                List<String> sentMessages, List<String> receivedMessages,
+                List<String> alarms, int grade, long studentId) {
         this.id = id;
         this.accountId = accountId;
         this.name = name;

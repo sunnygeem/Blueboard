@@ -15,8 +15,13 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import model.User;
+import utils.FirebaseController;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -29,25 +34,32 @@ public class MainActivity extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Button firestoreButton = findViewById(R.id.firestore);
         firestoreButton.setOnClickListener(v -> {
-            // Add a new document with a generated id.
-            Map<String, Object> data = new HashMap<>();
-            data.put("name", "Tokyo");
-            data.put("country", "Japan");
-
-            db.collection("cities")
-                    .add(data)
-                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                        @Override
-                        public void onSuccess(DocumentReference documentReference) {
-                            Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.w(TAG, "Error adding document", e);
-                        }
-                    });
+//            // Add a new document with a generated id.
+//            Map<String, Object> data = new HashMap<>();
+//            data.put("name", "Tokyo");
+//            data.put("country", "Japan");
+//
+//            db.collection("cities")
+//                    .add(data)
+//                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+//                        @Override
+//                        public void onSuccess(DocumentReference documentReference) {
+//                            Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
+//                        }
+//                    })
+//                    .addOnFailureListener(new OnFailureListener() {
+//                        @Override
+//                        public void onFailure(@NonNull Exception e) {
+//                            Log.w(TAG, "Error adding document", e);
+//                        }
+//                    });
+            // FirebaseController test
+            List<String> listA = new ArrayList<String>();
+            listA.add("t1");
+            listA.add("t2");
+            User user = new User("abc1", "test", "test", "test", "test", "test", "test", listA, null, null, null, 1, 1);
+            FirebaseController controller = new FirebaseController();
+            controller.sendUserData(user);
         });
 
         // Login button
