@@ -82,57 +82,8 @@ public class User {
         return null;
     }
 
-    public String getAccountId() {
-        return accountId;
-    }
-
-    // getter
-    public String getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getInstitution() {
-        return institution;
-    }
-
-    public String getMajor() {
-        return major;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getProfile() {
-        return profile;
-    }
-
-    public List<String> getCourses() {
-        return courses;
-    }
-
-    public List<String> getSentMessages() {
-        return sentMessages;
-    }
-
-    public List<String> getReceivedMessages() {
-        return receivedMessages;
-    }
-
-    public List<String> getAlarms() {
-        return alarms;
-    }
-
-    public int getGrade() {
-        return grade;
-    }
-
-    public long getStudentId() {
-        return studentId;
+    public String getAccountId(){
+        return this.accountId;
     }
 }
 
