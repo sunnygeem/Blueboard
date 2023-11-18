@@ -2,6 +2,7 @@ package com.se.blueboard;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,6 +25,7 @@ import model.User;
 import utils.FirebaseController;
 
 public class MainActivity extends AppCompatActivity {
+    private static Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // main screen (9 buttons)
@@ -125,5 +127,9 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+    }
+
+    public static Context getContext(){
+        return MainActivity.context;
     }
 }
