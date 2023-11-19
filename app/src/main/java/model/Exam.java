@@ -25,5 +25,14 @@ public class Exam extends LectureContent {
     }
 
     // Methods (If additional methods are needed for Exam, add them here)
+
+    // getter
+    public Date getDate() {
+        return date;
+    }
+
+    public String getLocation() {
+        return location;
+    }
 }
 

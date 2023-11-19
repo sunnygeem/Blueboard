@@ -30,10 +30,25 @@ public class LearningStatus {
         // TODO: implement
     }
 
+    // getter
+    public String getId() {
+        return id;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public String getCourseId() {
+        return courseId;
+    }
+
+    public String getContentId() {
+        return contentId;
+    }
+
     public String getStatus() {
-        // 해당 content에 대한 출석, 지각, 결석 상태를 get
-        // TODO: implement
-        return null;
+        return status;
     }
 }
 

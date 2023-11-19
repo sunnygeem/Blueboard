@@ -23,5 +23,10 @@ public class Reply extends Message {
     }
 
     // Methods (If additional methods are needed for Reply, add them here)
+
+    // getter
+    public String getRootMessage() {
+        return rootMessage;
+    }
 }
 

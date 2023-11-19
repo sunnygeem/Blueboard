@@ -49,4 +49,33 @@ public class Lecture {
         // 콘텐츠를 리스트에 추가
         // TODO: implement
     }
+
+    // getter
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getWeeks() {
+        return weeks;
+    }
+
+    public String getManagerId() {
+        return managerId;
+    }
+
+    public List<String> getManagers() {
+        return managers;
+    }
+
+    public List<String> getStudents() {
+        return students;
+    }
+
+    public List<String> getLectureContents() {
+        return lectureContents;
+    }
 }
