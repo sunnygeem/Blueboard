@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.widget.Toast;
 
 
+import com.se.blueboard.MainActivity;
+
 import java.io.File;
 import java.util.Collections;
 import java.util.List;
@@ -73,6 +75,12 @@ public class Utils implements Utilities {
     public void search(String attribute, String searchString) {
         // 검색 기능, 해당 attribute에 주어진 string이 있는지 확인
         // TODO: implement
+        if(attribute.contains(searchString)){
+            Toast.makeText(MainActivity.getContext(), attribute+" 에"+searchString+"가 포함되어 있습니다.", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(MainActivity.getContext(), attribute+" 에"+searchString+"가 없습니다.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public static void gotoPage(Context curContext, Class<?> page) {
