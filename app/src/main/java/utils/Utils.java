@@ -1,6 +1,7 @@
 package utils;
 
 import android.content.Context;
+import android.content.Intent;
 import android.widget.Toast;
 
 
@@ -74,9 +75,12 @@ public class Utils implements Utilities {
         // TODO: implement
     }
 
-    public void gotoPage(String page) {
+    public static void gotoPage(Context curContext, Class<?> page) {
         // 해당 페이지로 이동(포워딩)
         // TODO: implement
+        Intent intent = new Intent(curContext, page);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        curContext.startActivity(intent);
     }
 
     public void showErrMsg(String errorMessage) {

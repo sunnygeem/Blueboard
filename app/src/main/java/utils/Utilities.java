@@ -12,7 +12,6 @@ public interface Utilities {
     void sortBy(List<String> list, Utils.Sort order);
     void filterBy();
     void search(String attribute, String searchString);
-    void gotoPage(String page);
     void showErrMsg(String errorMessage);
     void pushAlarm();
     String masking(String personalInfo);
