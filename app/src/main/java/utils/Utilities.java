@@ -14,7 +14,7 @@ public interface Utilities {
     void sortBy(List<String> list, Utils.Sort order);
     void filterBy();
     void search(String attribute, String searchString);
-    void gotoPage(String page);
+    static void gotoPage(String page){};
     void showErrMsg(Context context, String errorMessage);
     void pushAlarm(Context context, String channelId, int id, String title, String body);
     String masking(String personalInfo);
