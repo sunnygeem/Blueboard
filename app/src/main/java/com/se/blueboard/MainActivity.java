@@ -139,7 +139,6 @@ public class MainActivity extends AppCompatActivity {
             );
 
             Utils.makeUtils().pushAlarm(getApplicationContext(), "test_channel", 1, "title", "text", pendingIntent);
-
         });
 
     }

@@ -15,7 +15,7 @@ public interface Utilities {
     void filterBy();
     void search(String attribute, String searchString);
     void gotoPage(String page);
-    void showErrMsg(String errorMessage);
+    void showErrMsg(Context context, String errorMessage);
     void pushAlarm(Context context, String channelId, int id, String title, String body);
     String masking(String personalInfo);
     void pagination();

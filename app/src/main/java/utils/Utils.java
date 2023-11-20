@@ -1,6 +1,7 @@
 package utils;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -101,10 +102,10 @@ public class Utils implements Utilities {
         // TODO: implement
     }
 
-    public void showErrMsg(String errorMessage) {
+    public void showErrMsg(Context context, String errorMessage) {
         // 에러 메시지 출력
         // TODO: implement
-
+        Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -130,20 +131,18 @@ public class Utils implements Utilities {
         builder.setContentIntent(pendingIndent);
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+
+        // POST_NOTIFICATIONS 권한 없으면 부여
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
+            int NOTIFICATION_PERMISSION_REQUEST_CODE = 12764; // 임의의 권한 요청 코드
+            ActivityCompat.requestPermissions((Activity) context,
+                    new String[]{Manifest.permission.POST_NOTIFICATIONS},
+                    NOTIFICATION_PERMISSION_REQUEST_CODE);
             return;
         }
-        System.out.println("notify?");
+
         notificationManager.notify(id, builder.build());
-        System.out.println("notify success");
-        //TODO: destroyNotification
+
     }
 
     public String masking(String personalInfo) {
