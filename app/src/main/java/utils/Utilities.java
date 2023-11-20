@@ -13,7 +13,7 @@ public interface Utilities {
     boolean lengthAvail(String str, int length);
     void sortBy(List<String> list, Utils.Sort order);
     void filterBy();
-    void search(String attribute, String searchString);
+    void search(List<String> list, String searchString);
     static void gotoPage(String page){};
     void showErrMsg(Context context, String errorMessage);
     void pushAlarm(Context context, String channelId, int id, String title, String body);
