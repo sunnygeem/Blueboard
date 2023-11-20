@@ -2,6 +2,7 @@ package model;
 
 public class Institution {
     // Fields
+    private String id;
     private String institution;
     private String major;
 
@@ -21,6 +22,10 @@ public class Institution {
     // Methods (If additional methods are needed for Institution, add them here)
 
     // getter
+    public String getId() {
+        return id;
+    }
+
     public String getInstitution() {
         return institution;
     }

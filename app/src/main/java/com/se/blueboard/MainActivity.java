@@ -3,6 +3,7 @@ package com.se.blueboard;
 import static android.content.ContentValues.TAG;
 
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,11 +23,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import utils.MyCallback;
+import utils.Utils;
 import model.User;
 import utils.FirebaseController;
 import utils.Utils;
 
 public class MainActivity extends AppCompatActivity {
+    private static Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // main screen (9 buttons)
@@ -60,72 +64,80 @@ public class MainActivity extends AppCompatActivity {
             List<String> listA = new ArrayList<String>();
             listA.add("t1");
             listA.add("t2");
-            User user = new User("abc1", "test", "test", "test", "test", "test", "test", listA, null, null, null, 1, 1);
+
+            // send test
+            // User user = new User("abc1", "test", "test", "test", "test", "test", "test", listA, null, null, null, 1, 1);
             FirebaseController controller = new FirebaseController();
-            controller.sendUserData(user);
+//            controller.sendUserData(user);
+            // get test
+            controller.getUserData("abc1", new MyCallback() {
+                @Override
+                public void onSuccess(Object object) {
+                    User user = (User) object;
+                    Log.d("onSuccess", user.toString());
+                }
+
+                @Override
+                public void onFailure(Exception e) {
+                    Log.d("GetUserData", e.getMessage());
+                }
+            });
         });
 
         // Login button
         Button loginButton = findViewById(R.id.login);
         loginButton.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), LoginPage.class);
-            startActivity(intent);
+            Utils.gotoPage(getApplicationContext(), LoginPage.class);
+            
         });
 
         // Announcement button
         Button announcementButton = findViewById(R.id.announcement);
         announcementButton.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), AnnouncementPage.class);
-            startActivity(intent);
+            Utils.gotoPage(getApplicationContext(), AnnouncementPage.class);
+            
         });
 
         // Attendance button
         Button attendanceButton = findViewById(R.id.attendance);
         attendanceButton.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), AttendancePage.class);
-            startActivity(intent);
+            Utils.gotoPage(getApplicationContext(), AttendancePage.class);
         });
 
         // Contents button
         Button contentsButton = findViewById(R.id.contents);
         contentsButton.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), ContentsPage.class);
-            startActivity(intent);
+            Utils.gotoPage(getApplicationContext(), ContentsPage.class);
         });
 
         // Groups button
         Button groupsButton = findViewById(R.id.groups);
         groupsButton.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), GroupsPage.class);
-            startActivity(intent);
+            Utils.gotoPage(getApplicationContext(), GroupsPage.class);
         });
 
         // Home button
         Button homeButton = findViewById(R.id.home);
         homeButton.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), HomePage.class);
-            startActivity(intent);
+            Utils.gotoPage(getApplicationContext(), HomePage.class);
         });
 
         // Lecture button
         Button lectureButton = findViewById(R.id.lecture);
         lectureButton.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), LecturePage.class);
-            startActivity(intent);
+            Utils.gotoPage(getApplicationContext(), LecturePage.class);
         });
 
         // Message button
         Button messageButton = findViewById(R.id.message);
         messageButton.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), MessagePage.class);
-            startActivity(intent);
+            Utils.gotoPage(getApplicationContext(), MessagePage.class);
         });
 
         // Profile button
         Button profileButton = findViewById(R.id.profile);
         profileButton.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), ProfilePage.class);
-            startActivity(intent);
+            Utils.gotoPage(getApplicationContext(), ProfilePage.class);
         });
 
         Button pushButton = findViewById(R.id.push);
@@ -143,4 +155,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public static Context getContext(){
+        return MainActivity.context;
+    }
 }
