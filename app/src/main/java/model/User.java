@@ -37,12 +37,19 @@ public class User {
         this.grade = grade;
         this.studentId = studentId;
     }
-
+    private User() {}
     // Named Constructor
     public static User makeUser() {
         // named constructor
         // TODO: implement
-        return new User(null, null, null, null, null, null, null, null, null, null, null, 0, 0);
+        return new User();
+    }
+
+    public static User makeUser(String id, String accountId, String name, String institution,
+                                String major, String email, String profile, List<String> courses,
+                                List<String> sentMessages, List<String> receivedMessages,
+                                List<String> alarms, int grade, long studentId) {
+        return new User(id, accountId, name, institution, major, email, profile, courses, sentMessages, receivedMessages, alarms, grade, studentId);
     }
 
     // Methods
@@ -62,6 +69,25 @@ public class User {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", accountId='" + accountId + '\'' +
+                ", name='" + name + '\'' +
+                ", institution='" + institution + '\'' +
+                ", major='" + major + '\'' +
+                ", email='" + email + '\'' +
+                ", profile='" + profile + '\'' +
+                ", courses=" + courses +
+                ", sentMessages=" + sentMessages +
+                ", receivedMessages=" + receivedMessages +
+                ", alarms=" + alarms +
+                ", grade=" + grade +
+                ", studentId=" + studentId +
+                '}';
     }
 
     public String getInstitution() {

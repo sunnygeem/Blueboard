@@ -4,8 +4,12 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -522,5 +526,304 @@ public class FirebaseController {
                         Log.e("FirebaseController", "Error adding submission data", e);
                     }
                 });
+    }
+    public void getUserData(String id, MyCallback myCallback) {
+        DocumentReference docRef = db.collection("users").document(id);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if(document.exists()) {
+                        User user = (User) document.toObject(User.class);
+                        myCallback.onSuccess(user);
+                    } else {
+                        Log.d("GetUserData", "No such Document.");
+                    }
+                } else {
+                    myCallback.onFailure(task.getException());
+                }
+            }
+        });
+    }
+
+    public void getAccountData(String id, MyCallback myCallback) {
+        DocumentReference docRef = db.collection("accounts").document(id);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if(document.exists()) {
+                        Account account = (Account) document.toObject(Account.class);
+                        myCallback.onSuccess(account);
+                    } else {
+                        Log.d("GetAccountData", "No such Document.");
+                    }
+                } else {
+                    myCallback.onFailure(task.getException());
+                }
+            }
+        });
+    }
+
+    public void getInstitutionData(String id, MyCallback myCallback) {
+        DocumentReference docRef = db.collection("institutions").document(id);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if(document.exists()) {
+                        Institution institution = (Institution) document.toObject(Institution.class);
+                        myCallback.onSuccess(institution);
+                    } else {
+                        Log.d("GetInstitutionData", "No such Document.");
+                    }
+                } else {
+                    myCallback.onFailure(task.getException());
+                }
+            }
+        });
+    }
+
+    public void getLectureData(String id, MyCallback myCallback) {
+        DocumentReference docRef = db.collection("lectures").document(id);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if(document.exists()) {
+                        Lecture lecture = (Lecture) document.toObject(Lecture.class);
+                        myCallback.onSuccess(lecture);
+                    } else {
+                        Log.d("GetLectureData", "No such Document.");
+                    }
+                } else {
+                    myCallback.onFailure(task.getException());
+                }
+            }
+        });
+    }
+
+    public void getExamData(String id, MyCallback myCallback) {
+        DocumentReference docRef = db.collection("exams").document(id);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if(document.exists()) {
+                        Exam exam = (Exam) document.toObject(Exam.class);
+                        myCallback.onSuccess(exam);
+                    } else {
+                        Log.d("GetExamData", "No such Document.");
+                    }
+                } else {
+                    myCallback.onFailure(task.getException());
+                }
+            }
+        });
+    }
+
+    public void getPostData(String id, MyCallback myCallback) {
+        DocumentReference docRef = db.collection("posts").document(id);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if(document.exists()) {
+                        Post post = (Post) document.toObject(Post.class);
+                        myCallback.onSuccess(post);
+                    } else {
+                        Log.d("GetPostData", "No such Document.");
+                    }
+                } else {
+                    myCallback.onFailure(task.getException());
+                }
+            }
+        });
+    }
+
+    public void getAssignmentData(String id, MyCallback myCallback) {
+        DocumentReference docRef = db.collection("assignments").document(id);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if(document.exists()) {
+                        Assignment assignment= (Assignment) document.toObject(Assignment.class);
+                        myCallback.onSuccess(assignment);
+                    } else {
+                        Log.d("GetAssignmentData", "No such Document.");
+                    }
+                } else {
+                    myCallback.onFailure(task.getException());
+                }
+            }
+        });
+    }
+
+    public void getMaterialData(String id, MyCallback myCallback) {
+        DocumentReference docRef = db.collection("materials").document(id);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if(document.exists()) {
+                        Material material= (Material) document.toObject(Material.class);
+                        myCallback.onSuccess(material);
+                    } else {
+                        Log.d("GetMaterialData", "No such Document.");
+                    }
+                } else {
+                    myCallback.onFailure(task.getException());
+                }
+            }
+        });
+    }
+
+    public void getLearningStatusData(String id, MyCallback myCallback) {
+        DocumentReference docRef = db.collection("learningStatuses").document(id);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if(document.exists()) {
+                        LearningStatus learningStatus= (LearningStatus) document.toObject(LearningStatus.class);
+                        myCallback.onSuccess(learningStatus);
+                    } else {
+                        Log.d("GetLearningStatusData", "No such Document.");
+                    }
+                } else {
+                    myCallback.onFailure(task.getException());
+                }
+            }
+        });
+    }
+
+    public void getMessageData(String id, MyCallback myCallback) {
+        DocumentReference docRef = db.collection("messages").document(id);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if(document.exists()) {
+                        Message message= (Message) document.toObject(Message.class);
+                        myCallback.onSuccess(message);
+                    } else {
+                        Log.d("GetMessageData", "No such Document.");
+                    }
+                } else {
+                    myCallback.onFailure(task.getException());
+                }
+            }
+        });
+    }
+
+    public void getReplyData(String id, MyCallback myCallback) {
+        DocumentReference docRef = db.collection("replies").document(id);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if(document.exists()) {
+                        Reply reply = (Reply) document.toObject(Reply.class);
+                        myCallback.onSuccess(reply);
+                    } else {
+                        Log.d("GetReplyData", "No such Document.");
+                    }
+                } else {
+                    myCallback.onFailure(task.getException());
+                }
+            }
+        });
+    }
+
+    public void getAlarmData(String id, MyCallback myCallback) {
+        DocumentReference docRef = db.collection("alarms").document(id);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if(document.exists()) {
+                        Alarm alarm = (Alarm) document.toObject(Alarm.class);
+                        myCallback.onSuccess(alarm);
+                    } else {
+                        Log.d("GetAlarmData", "No such Document.");
+                    }
+                } else {
+                    myCallback.onFailure(task.getException());
+                }
+            }
+        });
+    }
+
+    public void getAnnouncementData(String id, MyCallback myCallback) {
+        DocumentReference docRef = db.collection("announcements").document(id);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if(document.exists()) {
+                        Announcement announcement = (Announcement) document.toObject(Announcement.class);
+                        myCallback.onSuccess(announcement);
+                    } else {
+                        Log.d("GetAnnouncementData", "No such Document.");
+                    }
+                } else {
+                    myCallback.onFailure(task.getException());
+                }
+            }
+        });
+    }
+
+    public void getCommentData(String id, MyCallback myCallback) {
+        DocumentReference docRef = db.collection("comments").document(id);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if(document.exists()) {
+                        Comment comment = (Comment) document.toObject(Comment.class);
+                        myCallback.onSuccess(comment);
+                    } else {
+                        Log.d("GetCommentData", "No such Document.");
+                    }
+                } else {
+                    myCallback.onFailure(task.getException());
+                }
+            }
+        });
+    }
+
+    public void getSubmissionData(String id, MyCallback myCallback) {
+        DocumentReference docRef = db.collection("submissions").document(id);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if(document.exists()) {
+                        Submission submission = (Submission) document.toObject(Submission.class);
+                        myCallback.onSuccess(submission);
+                    } else {
+                        Log.d("GetSubmissionData", "No such Document.");
+                    }
+                } else {
+                    myCallback.onFailure(task.getException());
+                }
+            }
+        });
     }
 }

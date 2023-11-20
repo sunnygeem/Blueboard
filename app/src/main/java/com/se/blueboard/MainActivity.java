@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import utils.MyCallback;
 import utils.Utils;
 import model.User;
 import utils.FirebaseController;
@@ -60,9 +61,24 @@ public class MainActivity extends AppCompatActivity {
             List<String> listA = new ArrayList<String>();
             listA.add("t1");
             listA.add("t2");
-            User user = new User("abc1", "test", "test", "test", "test", "test", "test", listA, null, null, null, 1, 1);
+
+            // send test
+            // User user = new User("abc1", "test", "test", "test", "test", "test", "test", listA, null, null, null, 1, 1);
             FirebaseController controller = new FirebaseController();
-            controller.sendUserData(user);
+//            controller.sendUserData(user);
+            // get test
+            controller.getUserData("abc1", new MyCallback() {
+                @Override
+                public void onSuccess(Object object) {
+                    User user = (User) object;
+                    Log.d("onSuccess", user.toString());
+                }
+
+                @Override
+                public void onFailure(Exception e) {
+                    Log.d("GetUserData", e.getMessage());
+                }
+            });
         });
 
         // Login button
