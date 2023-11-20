@@ -14,6 +14,7 @@ public class LectureContent {
     private String detail;
 
     // Constructor
+    protected LectureContent() {}
     protected LectureContent(String id, String title, int week, Date deadline,
                            String type, List<String> files, String detail) {
         this.id = id;

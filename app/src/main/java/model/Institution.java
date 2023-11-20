@@ -7,6 +7,7 @@ public class Institution {
     private String major;
 
     // Constructor
+    private Institution() {}
     private Institution(String institution, String major) {
         this.institution = institution;
         this.major = major;

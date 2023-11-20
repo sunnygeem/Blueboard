@@ -9,6 +9,7 @@ public class Exam extends LectureContent {
     private String location;
 
     // Constructor
+    private Exam() {}
     private Exam(String id, String title, int week, Date deadline,
                  String type, List<String> files, String detail,
                  Date date, String location) {

@@ -14,6 +14,8 @@ public class Comment {
     private List<String> comments;
 
     // Constructor
+    private Comment() {}
+
     private Comment(String id, String writer, String detail, Date uploadTime,
                     List<String> files, String rootPost, List<String> comments) {
         this.id = id;

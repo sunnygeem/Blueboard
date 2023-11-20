@@ -13,6 +13,7 @@ public class Lecture {
     private List<String> lectureContents;
 
     // Constructor
+    private Lecture() {}
     private Lecture(String id, String name, String weeks, String managerId,
                     List<String> managers, List<String> students, List<String> lectureContents) {
         this.id = id;

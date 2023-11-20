@@ -9,6 +9,7 @@ public class LearningStatus {
     private String status;
 
     // Constructor
+    private LearningStatus() {}
     private LearningStatus(String id, String userId, String courseId, String contentId, String status) {
         this.id = id;
         this.userId = userId;

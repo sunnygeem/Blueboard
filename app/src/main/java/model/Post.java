@@ -9,6 +9,9 @@ public class Post extends LectureContent {
     private List<String> comments;
 
     // Constructor
+    private Post() {
+        super();
+    }
     private Post(String id, String title, int week, Date deadline,
                  String type, List<String> files, String detail,
                  Date uploadTime, List<String> comments) {

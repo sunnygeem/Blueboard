@@ -10,6 +10,10 @@ public class Assignment extends LectureContent {
     private List<String> submissions;
 
     // Constructor
+    private Assignment() {
+        super();
+    }
+
     private Assignment(String id, String title, int week, Date deadline,
                        String type, List<String> files, String detail,
                        Date uploadTime, Date deadlineDate, List<String> submissions) {
