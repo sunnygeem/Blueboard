@@ -2,9 +2,11 @@ package com.se.blueboard;
 
 import static android.content.ContentValues.TAG;
 
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
@@ -22,6 +24,7 @@ import java.util.Map;
 
 import model.User;
 import utils.FirebaseController;
+import utils.Utils;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -125,5 +128,20 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        Button pushButton = findViewById(R.id.push);
+        pushButton.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            PendingIntent pendingIntent = PendingIntent.getActivity(
+                    getApplicationContext(),
+                    0,
+                    intent,
+                    PendingIntent.FLAG_IMMUTABLE
+            );
+
+            Utils.makeUtils().pushAlarm(getApplicationContext(), "test_channel", 1, "title", "text", pendingIntent);
+
+        });
+
     }
+
 }

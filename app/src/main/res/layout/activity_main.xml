@@ -76,4 +76,12 @@
         android:layout_marginHorizontal="70dp"
         android:text="Firestore Test" />
 
+    <Button
+        android:id="@+id/push"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="70dp"
+        android:text="Push Test" />
+
+
 </LinearLayout>

@@ -1,5 +1,7 @@
 package utils;
 
+import android.content.Context;
+
 import java.io.File;
 import java.util.List;
 
@@ -14,7 +16,7 @@ public interface Utilities {
     void search(String attribute, String searchString);
     void gotoPage(String page);
     void showErrMsg(String errorMessage);
-    void pushAlarm();
+    void pushAlarm(Context context, String channelId, int id, String title, String body);
     String masking(String personalInfo);
     void pagination();
 }

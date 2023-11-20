@@ -1,8 +1,19 @@
 package utils;
 
+import android.Manifest;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.widget.Toast;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+
+import com.se.blueboard.R;
 
 import java.io.File;
 import java.util.Collections;
@@ -12,12 +23,14 @@ import model.Account;
 import model.User;
 
 public class Utils implements Utilities {
-    public enum Sort{
+    public enum Sort {
         ASCENDING, DESCENDING
     }
+
     public static void toastTest(Context context, String text) {
         Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
     }
+
     public static Utils makeUtils() {
         // named constructor
         // TODO: implement
@@ -27,7 +40,16 @@ public class Utils implements Utilities {
     public boolean isAdmin(User user) {
         // 관리자인지 확인
         // TODO: implement
-        return true;
+        // studentId는 사용자만 저장
+        // studentId가 -1이면 관리자
+        long studentId;
+
+        studentId = user.getStudentId();
+
+        if (studentId == -1)
+            return true;
+        else
+            return false;
     }
 
     public boolean fileAvail(File file, long sizeLimit, List<String> formats) {
@@ -40,7 +62,7 @@ public class Utils implements Utilities {
 
         fileSize = file.length();
         fileName = file.getName();
-        fileFormat = fileName.substring(fileName.lastIndexOf(".")+1);
+        fileFormat = fileName.substring(fileName.lastIndexOf(".") + 1);
 
         if (fileSize > sizeLimit || !formats.contains(fileFormat)) return false;
         else return true;
@@ -85,9 +107,43 @@ public class Utils implements Utilities {
 
     }
 
-    public void pushAlarm() {
+    @Override
+    public void pushAlarm(Context context, String channelId, int id, String title, String body) {
+
+    }
+
+    public void pushAlarm(Context context, String channelId, int id, String title, String body, PendingIntent pendingIndent) {
         // 푸시 알림 기능
         // TODO: implement
+        // 메시지 수신 알림, 댓글 수신 알림
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+            notificationManager.createNotificationChannel(new NotificationChannel(channelId, "default chanel", NotificationManager.IMPORTANCE_HIGH));
+        }
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, channelId);
+
+        builder.setSmallIcon(R.mipmap.ic_launcher);
+        builder.setContentTitle(title);
+        builder.setContentText(body);
+        builder.setContentIntent(pendingIndent);
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+        if (ActivityCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        System.out.println("notify?");
+        notificationManager.notify(id, builder.build());
+        System.out.println("notify success");
+        //TODO: destroyNotification
     }
 
     public String masking(String personalInfo) {
