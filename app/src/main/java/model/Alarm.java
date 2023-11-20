@@ -13,6 +13,7 @@ public class Alarm {
     private Date date;
 
     // Constructor
+    private Alarm() {}
     private Alarm(String id, String type, String receiverId, String senderId,
                   String title, String content, Date date) {
         this.id = id;

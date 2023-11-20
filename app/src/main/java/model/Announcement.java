@@ -23,6 +23,8 @@ public class Announcement {
         this.comments = comments;
     }
 
+    private Announcement() {}
+
     // Named Constructor
     public static Announcement makeAnnouncement() {
         // named constructor

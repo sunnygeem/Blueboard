@@ -8,6 +8,9 @@ public class Material extends LectureContent {
     private Date uploadTime;
 
     // Constructor
+    private Material() {
+        super();
+    }
     private Material(String id, String title, int week, Date deadline,
                      String type, List<String> files, String detail,
                      Date uploadTime) {

@@ -8,6 +8,8 @@ public class Account {
     private boolean isManager;
     private int loginFail;
 
+    private Account() {}
+
     // Constructor
     private Account(String id, String accountId, String accountPw, boolean isManager, int loginFail) {
         this.id = id;

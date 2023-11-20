@@ -62,7 +62,7 @@ public class FirebaseController {
         // Add data to "users" collection
         db.collection("users")
                 .document(user.getId())
-                .set(userMap)
+                .set(user)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -527,6 +527,23 @@ public class FirebaseController {
                     }
                 });
     }
+    public void sendLectureContentData(LectureContent lecContent) {
+        db.collection("lectureContents")
+                .document(lecContent.getId()).set(lecContent)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.i("FirebaseController", "LectureContent data added successfully");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.e("FirebaseController", "Error adding submission data", e);
+                    }
+                });
+    }
+
     public void getUserData(String id, MyCallback myCallback) {
         DocumentReference docRef = db.collection("users").document(id);
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -825,5 +842,83 @@ public class FirebaseController {
                 }
             }
         });
+    }
+
+    public void getLectureContentData(String id, MyCallback myCallback) {
+        DocumentReference docRef = db.collection("lectureContents").document(id);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if(document.exists()) {
+                        LectureContent lectureContent = (LectureContent) document.toObject(LectureContent.class);
+                        myCallback.onSuccess(lectureContent);
+                    } else {
+                        Log.d("GetLectureContentData", "No such Document.");
+                    }
+                } else {
+                    myCallback.onFailure(task.getException());
+                }
+            }
+        });
+    }
+
+    public void deleteData(String collection, String document) {
+        DocumentReference docRef = db.collection(collection).document(document);
+        docRef.delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("deleteData", "Document successfully deleted");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("deleteData", "Error deleting document", e);
+                    }
+                });
+    }
+
+    public void updateData(Object object) {
+//        Log.d("Compare", (object.getClass() == User.class) ? "true":"false");
+        Class objectClass = object.getClass();
+        if (objectClass == Account.class) {
+            sendAccountData((Account) object);
+        } else if (objectClass == Alarm.class) {
+            sendAlarmData((Alarm) object);
+        } else if (objectClass == Announcement.class) {
+            sendAnnouncementData((Announcement) object);
+        } else if (objectClass == Assignment.class) {
+            sendAssignmentData((Assignment) object);
+        } else if (objectClass == Comment.class) {
+            sendCommentData((Comment) object);
+        } else if (objectClass == Exam.class) {
+            sendExamData((Exam) object);
+        } else if (objectClass == Institution.class) {
+            sendInstitutionData((Institution) object);
+        } else if (objectClass == LearningStatus.class) {
+            sendLearningStatusData((LearningStatus) object);
+        } else if (objectClass == Lecture.class) {
+            sendLectureData((Lecture) object);
+        } else if (objectClass == LectureContent.class) {
+            sendLectureContentData((LectureContent) object);
+        } else if (objectClass == Material.class) {
+            sendMaterialData((Material) object);
+        } else if (objectClass == Message.class) {
+            sendMessageData((Message) object);
+        } else if (objectClass == Post.class) {
+            sendPostData((Post) object);
+        } else if (objectClass == Reply.class) {
+            sendReplyData((Reply) object);
+        } else if (objectClass == Submission.class) {
+            sendSubmissionData((Submission) object);
+        } else if (objectClass == User.class) {
+            Log.d("updateData", ((User)object).toString());
+            sendUserData((User) object);
+        } else {
+            Log.d("updateData", "No such Object in DB");
+        }
     }
 }

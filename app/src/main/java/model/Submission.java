@@ -10,6 +10,7 @@ public class Submission {
     private Date date;
 
     // Constructor
+    private Submission() {}
     private Submission(String id, String user, String name, Date date) {
         this.id = id;
         this.user = user;

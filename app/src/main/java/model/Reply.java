@@ -8,6 +8,9 @@ public class Reply extends Message {
     private String rootMessage;
 
     // Constructor
+    private Reply() {
+        super();
+    }
     private Reply(String id, String receiverId, String senderId, String title,
                   String content, Date date, List<String> replies,
                   List<String> files, boolean isRead, String rootMessage) {
