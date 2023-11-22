@@ -1,16 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<!-- Auto layout, variables, and unit scale are not yet supported -->
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center">
+    android:id="@+id/login"
+    android:layout_width="393dp"
+    android:layout_height="852dp"
+    android:clipToOutline="true"
+    android:background="#FFFFFF">
 
     <TextView
-        android:id="@+id/textview1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Login with sunny" />
+        android:id="@+id/blueboard"
+        android:layout_width="358dp"
+        android:layout_height="62dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="17dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="100dp"
+        android:text="BLUEBOARD"
+        android:textSize="48sp"
+        android:letterSpacing="0.03"
+        android:textColor="#0478FF"
+        android:textStyle="bold"
+        android:gravity="center_horizontal|top" />
 
-</LinearLayout>
+    <ImageView
+        android:layout_width="146dp"
+        android:layout_height="146dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="120dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="160dp"
+        android:clipToOutline="true"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/icon_park_blackboard" />
+
+    <View
+        android:id="@+id/rectangle_1"
+        android:layout_width="311dp"
+        android:layout_height="56dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="38dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="326dp"
+        android:background="#D9D9D9" />
+
+    <View
+        android:id="@+id/rectangle_2"
+        android:layout_width="311dp"
+        android:layout_height="56dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="38dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="400dp"
+        android:background="#D9D9D9" />
+
+    <View
+        android:id="@+id/rectangle_3"
+        android:layout_width="311dp"
+        android:layout_height="56dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="38dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="474dp"
+        android:background="#0478FF"
+        android:elevation="4dp" />
+
+    <View
+        android:id="@+id/rectangle_4"
+        android:layout_width="311dp"
+        android:layout_height="56dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="38dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="548dp"
+        android:background="#FFFFFF"
+        android:elevation="4dp" />
+
+
+
+
+
+
+</RelativeLayout>
