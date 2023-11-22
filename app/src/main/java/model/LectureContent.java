@@ -46,31 +46,29 @@ public class LectureContent {
 
     // getter
     public String getId() {
-        return id;
+        return this.id;
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
     public int getWeek() {
-        return week;
+        return this.week;
     }
 
     public Date getDeadline() {
-        return deadline;
+        return this.deadline;
     }
 
     public String getType() {
-        return type;
+        return this.type;
     }
 
-    public List<String> getFiles() {
-        return files;
-    }
+    public List<String> getFiles() { return this.files; }
 
     public String getDetail() {
-        return detail;
+        return this.detail;
     }
 }
 
