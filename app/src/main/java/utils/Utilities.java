@@ -1,6 +1,7 @@
 package utils;
 
 import android.content.Context;
+import android.widget.LinearLayout;
 
 import java.io.File;
 import java.util.List;
@@ -18,5 +19,5 @@ public interface Utilities {
     void showErrMsg(Context context, String errorMessage);
     void pushAlarm(Context context, String channelId, int id, String title, String body);
     String masking(String personalInfo);
-    void pagination();
+    void pagination(Context context, LinearLayout containerLayout, List<String> pageItem, int currentPage);
 }

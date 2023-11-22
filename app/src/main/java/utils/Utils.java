@@ -9,6 +9,8 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.content.Intent;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
@@ -184,9 +186,36 @@ public class Utils implements Utilities {
         return maskedString;//마스킹된 정보 반환
     }
 
-    public void pagination() {
+    public void pagination(Context context, LinearLayout containerLayout,List<String> pageItem,int currentPage) {
         // 메시지나 공지사항에서 사용
-        // TODO: implement
+        // 페이지 가득차면 다음 페이지로 넘기는 것
+        int pageItemLimit = 8; // 내 폰에 8개 보이길래 8로 -> 파라미터로 받는걸로 수정할까?
+        int page = currentPage;
+        int pageItemCount = pageItem.size();
+
+        while(pageItemCount > 0) {
+            int start = (page - 1) * pageItemLimit;
+            int end = Math.min(start + pageItemLimit, pageItem.size());
+
+            //해당 페이지 아이템(메시지||공지) 추출
+            List<String> currentPageItems = pageItem.subList(start,end);
+
+            // show items
+            //!!송수신자, 제목, 시간 따로 받아와서 구성하는 부분 생략
+            for(String item : currentPageItems) {
+                TextView textView = new TextView(context);
+                textView.setText(item);
+                containerLayout.addView(textView);
+            }
+            page++;
+            //!!실제로 다음페이지로 넘어가는거 -> gotoPage()이용? or 페이지 textview 싹다지우고 ?
+            pageItemCount = Math.max(0, pageItemCount - pageItemLimit);
+        }
+
+
+
+
+
     }
 
 }
