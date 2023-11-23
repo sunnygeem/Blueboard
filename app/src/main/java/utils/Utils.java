@@ -71,9 +71,13 @@ public class Utils implements Utilities {
 
         fileSize = file.length();
         fileName = file.getName();
-        fileFormat = fileName.substring(fileName.lastIndexOf(".") + 1);
 
-        if (fileSize > sizeLimit || !formats.contains(fileFormat)) return false;
+        if (fileName.contains(".")) {
+            fileFormat = fileName.substring(fileName.lastIndexOf(".") + 1);
+            if (!formats.contains(fileFormat)) return false;
+        }
+
+        if (fileSize > sizeLimit) return false;
         else return true;
     }
 
