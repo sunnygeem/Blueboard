@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/lecture_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="18dp"
+        android:padding="5dp"
+        android:text="Lecture"
+        android:textSize="36sp"
+        android:textColor="#0A0B0B"
+        android:fontFamily="@font/palanquindark_regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/makeLecture_gotoBackThree"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        android:fontFamily="@font/palanquin_regular"
+        android:text="뒤로 가기"
+        android:textColor="#0478FF"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lecture_header"
+        app:layout_constraintEnd_toEndOf="@+id/lecture_header"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/lecture_header"
+        app:layout_constraintTop_toTopOf="@+id/lecture_header"
+        app:layout_constraintVertical_bias="0.535" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="7px"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="18dp"
+        android:background="#F3F3F3"
+        app:layout_constraintEnd_toEndOf="@+id/lecture_header"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/lecture_header"
+        app:layout_constraintTop_toBottomOf="@+id/lecture_header" />
+
+    <TextView
+        android:id="@+id/makeLecture_students"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="18dp"
+        android:fontFamily="@font/roboto_black"
+        android:padding="5dp"
+        android:text="수강인원"
+        android:textColor="#0A0B0B"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/makeLecture_lectureHeader"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="20dp"
+        android:background="@drawable/make_lecture_square"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="20dp"
+        android:text="수강인원"
+        android:textColor="#000000"
+        android:textSize="16sp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.591"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/makeLecture_students"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <!--  수강 인원 수  -->
+    <TextView
+        android:id="@+id/makeLecture_learningStudents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="20dp"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="right"
+        android:paddingHorizontal="20dp"
+        android:text="current/max"
+
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/makeLecture_lectureHeader"
+        app:layout_constraintEnd_toEndOf="@+id/makeLecture_lectureHeader"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/makeLecture_lectureHeader"
+        app:layout_constraintTop_toTopOf="@+id/makeLecture_lectureHeader"
+        app:layout_constraintVertical_bias="0.526" />
+
+    <SearchView
+        android:id="@+id/makeLecture_searchStudent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="35dp"
+        android:background="#EEEEEF"
+        app:layout_constraintBottom_toTopOf="@+id/makeLecture_makeLectureButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/makeLecture_lectureHeader"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <!--  생성 버튼  -->
+    <Button
+        android:id="@+id/makeLecture_makeLectureButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp"
+        android:background="@drawable/make_lecture_button"
+        android:fontFamily="@font/roboto_bold"
+        android:text="생성"
+        android:textColor="#FFFFFF"
+
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
