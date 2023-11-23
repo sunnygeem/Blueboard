@@ -15,6 +15,8 @@ public class LecturePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lecture);
 
+        // 전달 받은 intent의 lectureName으로 변경
+        setLectureName(getIntent().getExtras().getString("lectureName"));
 
         // Home button
         Button homeButton = findViewById(R.id.goto_main);

@@ -8,28 +8,33 @@ public class Lecture {
     private String name;
     private String weeks;
     private String managerId;
+    private String maxStudents;
     private List<String> managers;
     private List<String> students;
     private List<String> lectureContents;
 
     // Constructor
     private Lecture() {}
-    private Lecture(String id, String name, String weeks, String managerId,
+    private Lecture(String id, String name, String weeks, String managerId, String maxStudents,
                     List<String> managers, List<String> students, List<String> lectureContents) {
         this.id = id;
         this.name = name;
         this.weeks = weeks;
         this.managerId = managerId;
+        this.maxStudents = maxStudents;
         this.managers = managers;
         this.students = students;
         this.lectureContents = lectureContents;
     }
 
-    // Named Constructor
     public static Lecture makeLecture() {
-        // named constructor
-        // TODO: implement
-        return new Lecture(null, null, null, null, null, null, null);
+        return new Lecture();
+    }
+    // Named Constructor
+    public static Lecture makeLecture(String id, String name, String weeks, String managerId, String maxStudents,
+                                      List<String> managers, List<String> students, List<String> lectureContents) {
+
+        return new Lecture(id, name, weeks, managerId, maxStudents, managers, students, lectureContents);
     }
 
     // Methods
@@ -53,30 +58,39 @@ public class Lecture {
 
     // getter
     public String getId() {
-        return id;
+        return this.id;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public String getWeeks() {
-        return weeks;
+        return this.weeks;
     }
 
     public String getManagerId() {
-        return managerId;
+        return this.managerId;
     }
-
+    public String getMaxStudents() { return this.maxStudents; }
     public List<String> getManagers() {
-        return managers;
+        return this.managers;
     }
 
     public List<String> getStudents() {
-        return students;
+        return this.students;
     }
 
     public List<String> getLectureContents() {
-        return lectureContents;
+        return this.lectureContents;
     }
+
+    // setter
+    public void setId(String id) { this.id = id; }
+    public void setName(String name) {this.name = name;}
+    public void setWeeks(String weeks) {this.weeks = weeks;}
+    public void setMaxStudents(String maxStudents) { this.maxStudents = maxStudents; }
+    public void addManager(String manager) { this.managers.add(manager); }
+    public void delManager(String manager) { this.managers.remove(manager); }
+
 }

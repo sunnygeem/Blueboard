@@ -10,6 +10,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.content.Intent;
 import android.widget.LinearLayout;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -100,7 +101,6 @@ public class Utils implements Utilities {
 
 
     }
-
     public void search(List<String> list, String searchString) {
         // 검색 기능, 해당 attribute에 주어진 string이 있는지 확인
         // TODO: implement
