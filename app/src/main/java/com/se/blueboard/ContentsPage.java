@@ -1,6 +1,8 @@
 package com.se.blueboard;
 
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,21 +16,13 @@ public class ContentsPage extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.contents);
-        // Dummy data for recyclerView test
-        ArrayList<String> testDataSet = new ArrayList<>();
-        for(int i = 0; i < 20; i++) {
-            testDataSet.add("test" + i);
-        }
 
-        RecyclerView recyclerView = findViewById(R.id.lectureContents_recyclerView);
+        // Test Contents List
+        String[] listAdmin = {"Admin1", "Admin2", "Admin3"};
+        ArrayAdapter adminListAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, listAdmin);
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(linearLayoutManager);
-
-        CustomAdapter customAdapter = new CustomAdapter(testDataSet);
-
-        recyclerView.setAdapter(customAdapter);
+        ListView adminslistView = findViewById(R.id.lectureContents_contentsList);
+        adminslistView.setAdapter(adminListAdapter);
     }
 }
