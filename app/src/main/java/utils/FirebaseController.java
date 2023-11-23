@@ -1,5 +1,7 @@
 package utils;
 
+import android.net.Uri;
+import android.os.Environment;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -11,7 +13,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,10 +41,12 @@ import model.User;
 
 public class FirebaseController {
     private FirebaseFirestore db;
+    private FirebaseStorage storage;
 
     public FirebaseController() {
         // Connect to Firebase Firestore
         db = FirebaseFirestore.getInstance();
+        storage = FirebaseStorage.getInstance();
     }
 
     // Send User data to Firebase
@@ -920,5 +929,70 @@ public class FirebaseController {
         } else {
             Log.d("updateData", "No such Object in DB");
         }
+    }
+
+    public void uploadFile(File file) {
+        // call 하기 전에 fileAvail
+        // 확장자 별로 storage 분류
+        StorageReference storageRef;
+        UploadTask task;
+        Uri uri;
+        String name, format;
+
+        storageRef = storage.getReference();
+        uri = Uri.fromFile(file);
+
+        name = file.getName();
+
+        if (name.contains(".")) {
+            format = name.substring(name.lastIndexOf(".") + 1);
+        } else {
+            format = "etc";
+        }
+
+        StorageReference fileRef = storageRef.child(format + "/" + name);
+        task = fileRef.putFile(uri);
+
+        task.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Log.d("Upload File", "Success to Upload file.");
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("Upload File", "Fail to Upload file.");
+            }
+        });
+    }
+
+    public void downloadFile(String name) {
+        StorageReference fileRef;
+        String format;
+        File downloadFile, downloadFolder;
+        FileDownloadTask task;
+
+        if (name.contains(".")) {
+            format = name.substring(name.lastIndexOf(".") + 1);
+        } else {
+            format = "etc";
+        }
+        fileRef = storage.getReference().child(format + "/" + name);
+
+        downloadFolder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+        downloadFile = new File(downloadFolder.getPath() + '/' + name);
+        task = fileRef.getFile(downloadFile);
+
+        task.addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                Log.d("Download File", "Success to Download file.");
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("Download File", "Fail to Download file.");
+            }
+        });
     }
 }
