@@ -41,25 +41,6 @@ public class MainActivity extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Button firestoreButton = findViewById(R.id.firestore);
         firestoreButton.setOnClickListener(v -> {
-//            // Add a new document with a generated id.
-//            Map<String, Object> data = new HashMap<>();
-//            data.put("name", "Tokyo");
-//            data.put("country", "Japan");
-//
-//            db.collection("cities")
-//                    .add(data)
-//                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-//                        @Override
-//                        public void onSuccess(DocumentReference documentReference) {
-//                            Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
-//                        }
-//                    })
-//                    .addOnFailureListener(new OnFailureListener() {
-//                        @Override
-//                        public void onFailure(@NonNull Exception e) {
-//                            Log.w(TAG, "Error adding document", e);
-//                        }
-//                    });
             // FirebaseController test
             List<String> listA = new ArrayList<String>();
             listA.add("t1");
