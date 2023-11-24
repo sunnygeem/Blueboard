@@ -118,25 +118,25 @@
         android:layout_marginTop="330dp"
         android:inputType="text"/>
 
-    <View
-        android:id="@+id/icon_mail"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="181dp"
-        android:layout_marginTop="656dp"
-        android:background="@drawable/icon_mail" />
-
     <Button
         android:id="@+id/icon_home"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="653dp"
+        android:layout_marginLeft="37dp"
+        android:layout_marginTop="657dp"
         android:background="@drawable/icon_home" />
+
+    <View
+        android:id="@+id/icon_notification"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="224dp"
+        android:layout_marginTop="656dp"
+        android:background="@drawable/icon_notification" />
 
     <View
         android:id="@+id/icon_person"
@@ -145,7 +145,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="320dp"
-        android:layout_marginTop="653dp"
+        android:layout_marginTop="656dp"
         android:background="@drawable/icon_person" />
 
     <TextView
@@ -154,7 +154,7 @@
         android:layout_height="30dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="209dp"
+        android:layout_marginLeft="152dp"
         android:layout_marginTop="652dp"
         android:background="@drawable/icon_circle"
         android:gravity="center"
@@ -162,5 +162,15 @@
         android:textColor="#000000"
         android:textSize="13sp"
         android:textStyle="bold" />
+
+    <View
+        android:id="@+id/icon_mail"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="124dp"
+        android:layout_marginTop="656dp"
+        android:background="@drawable/icon_mail" />
 
 </RelativeLayout>

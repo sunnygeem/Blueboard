@@ -14,6 +14,8 @@ public class ProfilePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
 
+        // Admin이면 관리자 버튼 띄워주도록 수정할 것
+
         Button editButton = findViewById(R.id.edit);
         editButton.setOnClickListener(view -> {
             Utils.gotoPage(getApplicationContext(), EditProfilePage.class);
@@ -24,6 +26,9 @@ public class ProfilePage extends AppCompatActivity {
             Utils.gotoPage(getApplicationContext(), HomePage.class);
         });
 
-
+        Button notiButton = findViewById(R.id.icon_notification);
+        notiButton.setOnClickListener(view -> {
+            Utils.gotoPage(getApplicationContext(), NotificationPage.class);
+        });
     }
 }
