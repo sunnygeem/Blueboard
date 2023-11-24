@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Auto layout, variables, and unit scale are not yet supported -->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/edit_profile_"
+    android:layout_width="410dp"
+    android:layout_height="750dp"
+    android:clipToOutline="true"
+    android:background="#FFFFFF"
+    >
+
+    <View
+        android:id="@+id/icon_mail"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="181dp"
+        android:layout_marginTop="656dp"
+        android:background="@drawable/icon_mail" />
+
+    <Button
+        android:id="@+id/icon_home"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="653dp"
+        android:background="@drawable/icon_home" />
+
+    <View
+        android:id="@+id/icon_person"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="320dp"
+        android:layout_marginTop="653dp"
+        android:background="@drawable/icon_person" />
+
+    <TextView
+        android:id="@+id/unread_num"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="209dp"
+        android:layout_marginTop="652dp"
+        android:background="@drawable/icon_circle"
+        android:gravity="center"
+        android:text="3"
+        android:textColor="#000000"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>
