@@ -1,5 +1,7 @@
 package com.se.blueboard;
 
+import static com.se.blueboard.LecturePage.currentLecture;
+
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -15,17 +17,12 @@ public class GroupsPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.groups);
 
-        // Test Administrators list
-        String[] listAdmin = {"Admin1", "Admin2", "Admin3"};
-        ArrayAdapter adminListAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, listAdmin);
+        ArrayAdapter adminListAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, currentLecture.getManagers());
 
         ListView adminslistView = findViewById(R.id.userGroups_administratorsList);
         adminslistView.setAdapter(adminListAdapter);
 
-        // Test users list
-        String[] listUser = {"User1", "User2", "User3"};
-        ArrayAdapter userListAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, listUser);
-
+        ArrayAdapter userListAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, currentLecture.getStudents());
         ListView userslistView = findViewById(R.id.userGroups_userList);
         userslistView.setAdapter(userListAdapter);
     }
