@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.se.blueboard.R;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import model.Lecture;
@@ -16,6 +17,9 @@ import model.Lecture;
 // Main(Home)에서 강의 목록을 gridview로 출력할 수 있게 하는 adapter
 public class MainLectureAdapter extends BaseAdapter {
     ArrayList<Lecture> lectureItems = new ArrayList<Lecture>();
+
+    public MainLectureAdapter(ArrayList<Lecture> lectureItems) { this.lectureItems = lectureItems; }
+
 
     public void addLecture(Lecture lecture) {
         lectureItems.add(lecture);
