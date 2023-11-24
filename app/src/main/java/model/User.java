@@ -102,6 +102,8 @@ public class User {
         return email;
     }
 
+    public List<String> getLectures() { return this.courses; }
+
     public String getProfile() {
         return profile;
     }
