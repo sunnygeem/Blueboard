@@ -33,6 +33,12 @@ public class LectureContent {
         return new LectureContent(null, null, 0, null, null, null, null);
     }
 
+    public static LectureContent makeLectureContent(String id, String title, int week, Date deadline, String type, List<String> files, String detail) {
+        // named constructor (factory function)
+        // TODO: implement
+        return new LectureContent(id, title, week, deadline, type, files, detail);
+    }
+
     // Methods
     public void addFile(String fileTitle, Date date, String fileName) {
         // 수업자료 유형의 content일 경우. 제목, 날짜, 파일명이 argument로 제공된다.

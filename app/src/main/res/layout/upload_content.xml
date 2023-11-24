@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/lecture_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="18dp"
+        android:padding="5dp"
+        android:text="Upload Contents"
+        android:textSize="36sp"
+        android:textColor="#0A0B0B"
+        android:fontFamily="@font/palanquindark_regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="7px"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="18dp"
+        android:background="#F3F3F3"
+        app:layout_constraintEnd_toEndOf="@+id/lecture_header"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/lecture_header"
+        app:layout_constraintTop_toBottomOf="@+id/lecture_header" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
