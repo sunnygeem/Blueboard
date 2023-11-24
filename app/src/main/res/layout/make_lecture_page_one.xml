@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -14,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="18dp"
         android:padding="5dp"
-        android:text="Lecture Contents"
+        android:text="Lecture"
         android:textSize="36sp"
         android:textColor="#0A0B0B"
         android:fontFamily="@font/palanquindark_regular"
@@ -36,42 +35,27 @@
         app:layout_constraintStart_toStartOf="@+id/lecture_header"
         app:layout_constraintTop_toBottomOf="@+id/lecture_header" />
 
-    <ToggleButton
-        android:id="@+id/weeks_button"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
+    <SearchView
+        android:id="@+id/makeLecture_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="28dp"
-        android:textOn="모든 주차 닫기"
-        android:textOff="모든 주차 열기"
-        android:textColor="#0478FF"
-        android:textSize="16sp"
-        android:fontFamily="@font/palanquin_regular"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view" />
-
-    <Button
-        android:id="@+id/attendance_button"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="28dp"
-        android:text="출결/학습 현황"
-        android:textColor="#0478FF"
-        android:textSize="16sp"
-        android:background="#FFFFFF"
-        android:fontFamily="@font/palanquin_regular"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/search"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintTop_toBottomOf="@+id/view" />
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        />
 
     <ListView
-        android:id="@+id/lectureContents_contentsList"
+        android:id="@+id/makeLecture_lectureList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        app:layout_constraintTop_toBottomOf="@+id/weeks_button"
-        tools:layout_editor_absoluteX="0dp" />
-
+        android:layout_marginTop="12dp"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/makeLecture_search" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

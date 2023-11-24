@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/lecture_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="18dp"
+        android:padding="5dp"
+        android:text="Lecture"
+        android:textSize="36sp"
+        android:textColor="#0A0B0B"
+        android:fontFamily="@font/palanquindark_regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/makeLecture_gotoBack"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        android:fontFamily="@font/palanquin_regular"
+        android:text="뒤로 가기"
+        android:textColor="#0478FF"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/lecture_header"
+        app:layout_constraintEnd_toEndOf="@+id/lecture_header"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/lecture_header"
+        app:layout_constraintTop_toTopOf="@+id/lecture_header"
+        app:layout_constraintVertical_bias="0.535" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="7px"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="18dp"
+        android:background="#F3F3F3"
+        app:layout_constraintEnd_toEndOf="@+id/lecture_header"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/lecture_header"
+        app:layout_constraintTop_toBottomOf="@+id/lecture_header" />
+
+    <TextView
+        android:id="@+id/makeLecture_lectureHeader"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="30dp"
+        android:background="@drawable/make_lecture_square"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="20dp"
+        android:text="LectureID LectureName"
+        android:textColor="#000000"
+        android:textSize="16sp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.591"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <!--  학습 주차  -->
+    <TextView
+        android:id="@+id/makeLecture_weeks"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="30dp"
+        android:background="@drawable/make_lecture_square"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="20dp"
+        android:text="학습 주차"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.716"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/makeLecture_lectureHeader"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/makeLecture_weeksEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:fontFamily="@font/roboto_bold"
+        android:inputType="phone"
+        android:text="16"
+
+        app:layout_constraintBottom_toBottomOf="@+id/makeLecture_weeks"
+        app:layout_constraintEnd_toEndOf="@+id/makeLecture_weeks"
+        app:layout_constraintHorizontal_bias="0.963"
+        app:layout_constraintStart_toStartOf="@+id/makeLecture_weeks"
+        app:layout_constraintTop_toTopOf="@+id/makeLecture_weeks"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <!--  관리자 추가 기능 구현해야 함  -->
+    <TextView
+        android:id="@+id/makeLecture_admin"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="30dp"
+        android:background="@drawable/make_lecture_square"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="20dp"
+        android:text="관리자"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.716"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/makeLecture_weeks"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/makeLecture_adminButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        android:fontFamily="@font/palanquin_regular"
+        android:text="추가"
+        android:textColor="#0478FF"
+        android:textSize="16sp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/makeLecture_admin"
+        app:layout_constraintEnd_toEndOf="@+id/makeLecture_admin"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/makeLecture_admin"
+        app:layout_constraintTop_toTopOf="@+id/makeLecture_admin" />
+
+    <!--  수강 가능 인원  -->
+    <TextView
+        android:id="@+id/makeLecture_maxUsers"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="30dp"
+        android:background="@drawable/make_lecture_square"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="20dp"
+        android:text="수강 가능 인원"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.716"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/makeLecture_admin"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/makeLecture_maxUsersEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:fontFamily="@font/roboto_bold"
+        android:inputType="phone"
+        android:text="40"
+
+        app:layout_constraintBottom_toBottomOf="@+id/makeLecture_maxUsers"
+        app:layout_constraintEnd_toEndOf="@+id/makeLecture_maxUsers"
+        app:layout_constraintHorizontal_bias="0.963"
+        app:layout_constraintStart_toStartOf="@+id/makeLecture_maxUsers"
+        app:layout_constraintTop_toTopOf="@+id/makeLecture_maxUsers"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <!--  강의 계획서 파일 업로드 기능 추가해야 함  -->
+    <TextView
+        android:id="@+id/makeLecture_uploadFile"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="30dp"
+        android:background="@drawable/make_lecture_square"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="20dp"
+        android:text="강의 계획서"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.716"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/makeLecture_maxUsers"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/makeLecture_uploadFileButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        android:fontFamily="@font/palanquin_regular"
+        android:text="업로드"
+        android:textColor="#0478FF"
+        android:textSize="16sp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/makeLecture_uploadFile"
+        app:layout_constraintEnd_toEndOf="@+id/makeLecture_uploadFile"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/makeLecture_uploadFile"
+        app:layout_constraintTop_toTopOf="@+id/makeLecture_uploadFile" />
+
+    <!--  다음 버튼  -->
+    <Button
+        android:id="@+id/makeLecture_gotoThree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/make_lecture_button"
+        android:fontFamily="@font/roboto_bold"
+        android:text="다음"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/makeLecture_uploadFile" />
+</androidx.constraintlayout.widget.ConstraintLayout>

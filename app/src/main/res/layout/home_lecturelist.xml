@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:clipToPadding="false">
+
+        <LinearLayout
+            android:layout_width="150dp"
+            android:layout_height="140dp"
+            android:layout_gravity="center"
+            android:background="@drawable/main_round_square"
+            android:elevation="10dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/main_round_square_cover"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/main_lectureID"
+                android:layout_width="match_parent"
+                android:layout_height="19dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto_medium"
+                android:gravity="center"
+                android:text="lecture ID"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/main_lectureName"
+                android:layout_width="match_parent"
+                android:layout_height="23dp"
+                android:fontFamily="@font/roboto_light"
+                android:gravity="center"
+                android:text="Lecture Name"
+                android:textColor="#000000"
+                android:textSize="16sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+</LinearLayout>

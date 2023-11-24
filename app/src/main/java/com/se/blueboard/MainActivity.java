@@ -2,22 +2,23 @@ package com.se.blueboard;
 
 import static android.content.ContentValues.TAG;
 
+import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,35 +32,22 @@ import utils.Utils;
 
 public class MainActivity extends AppCompatActivity {
     private static Context context;
+    // 앱 실행시 권한 허가 필요
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static String[] PERMISSIONS_STORAGE = {
+            android.Manifest.permission.READ_EXTERNAL_STORAGE,
+            android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            android.Manifest.permission.POST_NOTIFICATIONS
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // main screen (9 buttons)
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        verifyStoragePermissions(this);
         // Firestore test
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
         Button firestoreButton = findViewById(R.id.firestore);
         firestoreButton.setOnClickListener(v -> {
-//            // Add a new document with a generated id.
-//            Map<String, Object> data = new HashMap<>();
-//            data.put("name", "Tokyo");
-//            data.put("country", "Japan");
-//
-//            db.collection("cities")
-//                    .add(data)
-//                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-//                        @Override
-//                        public void onSuccess(DocumentReference documentReference) {
-//                            Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
-//                        }
-//                    })
-//                    .addOnFailureListener(new OnFailureListener() {
-//                        @Override
-//                        public void onFailure(@NonNull Exception e) {
-//                            Log.w(TAG, "Error adding document", e);
-//                        }
-//                    });
             // FirebaseController test
             List<String> listA = new ArrayList<String>();
             listA.add("t1");
@@ -85,14 +73,23 @@ public class MainActivity extends AppCompatActivity {
 //                }
 //            });
             // update test
-            controller.updateData(user);
+//            controller.updateData(user);
+            // upload test
+
+//            File dir =  Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+//            File file = dir.listFiles()[0];
+
+//            File file = new File("/storage/emulated/0/Pictures/IMG_20231123_182503.jpg");
+//            controller.uploadFile(file);
+            String name = "1-CourseIntro.pdf";
+            controller.downloadFile(name);
+//            Log.d("TestTest", Environment.DIRECTORY_DOWNLOADS);
         });
 
         // Login button
         Button loginButton = findViewById(R.id.login);
         loginButton.setOnClickListener(view -> {
             Utils.gotoPage(getApplicationContext(), LoginPage.class);
-            
         });
 
         // Announcement button
@@ -162,4 +159,19 @@ public class MainActivity extends AppCompatActivity {
     public static Context getContext(){
         return MainActivity.context;
     }
+
+    public static void verifyStoragePermissions(Activity activity) {
+        // Check if we have write permission
+        int permission = ActivityCompat.checkSelfPermission(activity, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            // We don't have permission so prompt the user
+            ActivityCompat.requestPermissions(
+                    activity,
+                    PERMISSIONS_STORAGE,
+                    REQUEST_EXTERNAL_STORAGE
+            );
+        }
+    }
+
 }
