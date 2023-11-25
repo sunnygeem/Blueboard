@@ -38,6 +38,7 @@
         <activity android:name=".MessagePage" />
         <activity android:name=".ProfilePage" />
         <activity android:name=".EditProfilePage" />
+        <activity android:name=".NotificationPage" />
         <activity android:name=".Create" />
         <activity android:name=".UploadContentPage" />
         <activity android:name=".makeLecture.MakeLecturePageOne" />
