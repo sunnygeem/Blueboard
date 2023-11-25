@@ -48,24 +48,16 @@ public class ContentsListAdapter extends BaseAdapter {
 
         if(convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.contents_list, parent, false);
-
-            TextView currentWeek = (TextView) convertView.findViewById(R.id.contentsList_week);
-            currentWeek.setText( "Week " + Integer.toString(lectureContent.getWeek()));
-
-            Button uploadButton = convertView.findViewById(R.id.contentsList_uploadButton);
-            uploadButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Utils.gotoPage(context, UploadContentPage.class);
-                }
-            });
+            convertView = inflater.inflate(R.layout.contents_innerlist, parent, false);
         }
         else {
             View newView = new View(context);
             newView = (View) convertView;
         }
-
+        
+        // 강의 이름 설정
+        TextView lectureName = (TextView) convertView.findViewById(R.id.weeks_lectureContentsTextView);
+        lectureName.setText(lectureContent.getTitle());
 
 
         return convertView;
