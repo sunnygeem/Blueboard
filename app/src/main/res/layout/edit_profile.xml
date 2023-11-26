@@ -1,176 +1,214 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Auto layout, variables, and unit scale are not yet supported -->
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/edit_profile_"
-    android:layout_width="410dp"
-    android:layout_height="750dp"
-    android:clipToOutline="true"
-    android:background="#FFFFFF"
-    >
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:layout_width="146dp"
-        android:layout_height="146dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="126dp"
-        android:layout_marginTop="108dp"
-        android:layout_marginBottom="16dp"
+    <data>
+        <variable
+            name="originName"
+            type="String" />
+        <variable
+            name="originEngName"
+            type="String" />
+        <variable
+            name="originMail"
+            type="String" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/edit_profile_"
+        android:layout_width="410dp"
+        android:layout_height="750dp"
         android:clipToOutline="true"
-        android:src="@drawable/profile" />
+        android:background="#FFFFFF"
+        >
 
-    <TextView
-        android:id="@+id/profile"
-        android:layout_width="200dp"
-        android:layout_height="54dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="95dp"
-        android:layout_marginTop="42dp"
-        android:gravity="center"
-        android:text="개인정보 수정"
-        android:textColor="#000000"
-        android:textSize="30sp"
-        android:textStyle="bold" />
+        <ImageView
+            android:id="@+id/edit_image"
+            android:layout_width="146dp"
+            android:layout_height="146dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="126dp"
+            android:layout_marginTop="108dp"
+            android:layout_marginBottom="16dp"
+            android:clipToOutline="true"
+             />
 
-    <TextView
-        android:id="@+id/jpg_"
-        android:layout_width="200dp"
-        android:layout_height="24dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="112dp"
-        android:layout_marginTop="263dp"
-        android:text="프로필사진은 .jpg만 업로드 가능"
-        />
+        <TextView
+            android:id="@+id/profile"
+            android:layout_width="200dp"
+            android:layout_height="54dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="95dp"
+            android:layout_marginTop="42dp"
+            android:gravity="center"
+            android:text="개인정보 수정"
+            android:textColor="#000000"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="46dp"
-        android:layout_marginTop="341dp"
-        android:text="이름"
-        android:textSize="13sp" />
+        <TextView
+            android:id="@+id/jpg_"
+            android:layout_width="200dp"
+            android:layout_height="24dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="112dp"
+            android:layout_marginTop="263dp"
+            android:text="프로필사진은 .jpg만 업로드 가능"
+            />
 
-    <TextView
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="46dp"
-        android:layout_marginTop="394dp"
-        android:text="학번"
-        android:textSize="13sp" />
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="24dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="341dp"
+            android:text="한글 이름"
+            android:textSize="13sp" />
 
 
-    <EditText
-        android:id="@+id/edit_studentId"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="105dp"
-        android:layout_marginTop="383dp"
-        android:inputType="numberDecimal" />
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="24dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="395dp"
+            android:text="영문 이름"
+            android:textSize="13sp" />
 
-    <TextView
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="46dp"
-        android:layout_marginTop="458dp"
-        android:text="소속"
-        android:textSize="13sp" />
+        <EditText
+            android:id="@+id/edit_eng_name"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="105dp"
+            android:layout_marginTop="383dp"
+            android:inputType="text"
+            android:hint="@{originEngName}"
+            android:privateImeOptions="defaultInputmode=english"
+            />
 
-    <EditText
-        android:id="@+id/edit_in"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="106dp"
-        android:layout_marginTop="444dp"
-        android:inputType="text" />
 
-    <Button
-        android:id="@+id/edit"
-        android:layout_width="184dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="108dp"
-        android:layout_marginTop="554dp"
-        android:gravity="center"
-        android:text="저장"
-        android:textColor="#000000"
-        android:textSize="15sp"
-        android:textStyle="bold" />
+        <TextView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="46dp"
+            android:layout_marginTop="458dp"
+            android:text="메일"
+            android:textSize="13sp" />
 
-    <EditText
-        android:id="@+id/edit_name"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="106dp"
-        android:layout_marginTop="330dp"
-        android:inputType="text"/>
+        <EditText
+            android:id="@+id/edit_mail"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="106dp"
+            android:layout_marginTop="435dp"
+            android:inputType="text"
+            android:hint="@{originMail}"
+            android:privateImeOptions="defaultInputmode=english" />
 
-    <Button
-        android:id="@+id/icon_home"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="37dp"
-        android:layout_marginTop="657dp"
-        android:background="@drawable/icon_home" />
+        <Button
+            android:id="@+id/upload"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="280dp"
+            android:gravity="center"
+            android:text="사진 선택"
+            android:textColor="#000000"
+            android:textSize="7sp"
+            android:textStyle="bold" />
 
-    <View
-        android:id="@+id/icon_notification"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="224dp"
-        android:layout_marginTop="656dp"
-        android:background="@drawable/icon_notification" />
+        <Button
+            android:id="@+id/save"
+            android:layout_width="184dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="108dp"
+            android:layout_marginTop="554dp"
+            android:gravity="center"
+            android:text="저장"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
-    <View
-        android:id="@+id/icon_person"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="320dp"
-        android:layout_marginTop="656dp"
-        android:background="@drawable/icon_person" />
+        <EditText
+            android:id="@+id/edit_kor_name"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="106dp"
+            android:layout_marginTop="330dp"
+            android:inputType="text"
+            android:hint="@{originName}"
+            android:privateImeOptions="defaultInputmode=korean" />
 
-    <TextView
-        android:id="@+id/unread_num"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="152dp"
-        android:layout_marginTop="652dp"
-        android:background="@drawable/icon_circle"
-        android:gravity="center"
-        android:text="3"
-        android:textColor="#000000"
-        android:textSize="13sp"
-        android:textStyle="bold" />
 
-    <View
-        android:id="@+id/icon_mail"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="124dp"
-        android:layout_marginTop="656dp"
-        android:background="@drawable/icon_mail" />
+        <Button
+            android:id="@+id/icon_home"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="37dp"
+            android:layout_marginTop="657dp"
+            android:background="@drawable/icon_home" />
 
-</RelativeLayout>
+        <View
+            android:id="@+id/icon_notification"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="224dp"
+            android:layout_marginTop="656dp"
+            android:background="@drawable/icon_notification" />
+
+        <View
+            android:id="@+id/icon_person"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="320dp"
+            android:layout_marginTop="656dp"
+            android:background="@drawable/icon_person" />
+
+        <TextView
+            android:id="@+id/unread_num"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="152dp"
+            android:layout_marginTop="652dp"
+            android:background="@drawable/icon_circle"
+            android:gravity="center"
+            android:text="3"
+            android:textColor="#000000"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/icon_mail"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="124dp"
+            android:layout_marginTop="656dp"
+            android:background="@drawable/icon_mail" />
+
+    </RelativeLayout>
+</layout>
+
