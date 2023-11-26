@@ -1,0 +1,9 @@
+<!-- res/drawable/blue_circle.xml -->
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="#0478FF" /> <!-- Blue color -->
+    <size
+        android:width="12dp"
+        android:height="12dp" />
+</shape>
