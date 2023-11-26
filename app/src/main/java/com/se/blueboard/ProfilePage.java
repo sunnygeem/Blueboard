@@ -42,60 +42,51 @@ public class ProfilePage extends AppCompatActivity {
 
         ImageView imageView = findViewById(R.id.profile_image);
 
-        // profile image test
+        // image test
         // 1. 이미지를 bitmap으로 가져옴
         Bitmap image = BitmapFactory.decodeResource(this.getResources(), R.drawable.profile);
         // 2. bitmap 을 string으로 변환
         String imgString = bitmapToString(image);
         Log.d("Bitmap", imgString);
-
-        // binding test
-        currentUser = new User("1", "1", "문서진/MoonSeojin", "한양대학교", "컴퓨터소프트웨어학부", "sj1226m@hanyang.ac.kr", imgString, null, null, null, null, 3, 2021019834);
-
-        if(util.isAdmin(currentUser)){
-            TextView adminView = findViewById(R.id.admin);
-            adminView.setVisibility(View.INVISIBLE);
-        }
-
-        String maskingStudentId = util.masking(String.valueOf(currentUser.getStudentId()));
-        String in = currentUser.getInstitution().concat("\n" + currentUser.getMajor());
-
-        binding.setUsername(currentUser.getName());
-        binding.setEmail(currentUser.getEmail());
-        binding.setStudentId("(" + maskingStudentId + ")");
-        binding.setIn(in);
-
-        Bitmap imgBitmap = stringToBitmap(imgString);
-        imageView.setImageBitmap(imgBitmap);
-
+        // image test
 
         // TODO: LoginPage에서 id intent로 받아서 parameter 입력
-//        controller.getUserData("tmp", new MyCallback() {
-//            @Override
-//            public void onSuccess(Object object) {
-//                currentUser = (User) object;
-//                Log.d("onSuccessGetUserDataProfile", currentUser.toString());
-//
-//                // 관리자일 경우에만 표시
-//                if(util.isAdmin(currentUser)){
-//                    TextView adminView = findViewById(R.id.admin);
-//                    adminView.setVisibility(View.INVISIBLE);
-//                }
-//
-//                String maskingStdentId = util.masking(String.valueOf(currentUser.getStudentId()));
-//
-//                binding.setUsername(currentUser.getName());
-//                binding.setEmail(currentUser.getEmail());
-//                binding.setStudentId(maskingStdentId);
-//                binding.setIn(currentUser.getInstitution());
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Exception e) {
-//                Log.d("GetUserDataProfile", e.getMessage());
-//            }
-//        });
+        controller.getUserData("1", new MyCallback() {
+            @Override
+            public void onSuccess(Object object) {
+                currentUser = (User) object;
+                Log.d("onSuccessGetUserDataProfile", currentUser.toString());
+
+                // // 관리자면 관리자 버튼 보이고 학번 가림
+                if(util.isAdmin(currentUser)){
+                  TextView adminView = findViewById(R.id.admin);
+                  adminView.setVisibility(View.VISIBLE);
+
+                  TextView studentIdView = findViewById(R.id.studentId);
+                  studentIdView.setVisibility(View.INVISIBLE);
+                }
+
+                // 학번 마스킹 및 소속
+                String maskingStudentId = util.masking(String.valueOf(currentUser.getStudentId()));
+                String in = currentUser.getInstitution().concat("\n" + currentUser.getMajor());
+                // 프로필 사진 비트맵 변환
+                String profile = currentUser.getProfile();
+                Bitmap imgBitmap = stringToBitmap(profile);
+                imageView.setImageBitmap(imgBitmap);
+
+                binding.setUsername(currentUser.getName());
+                Log.d("ProfileName", currentUser.getName());
+                binding.setEmail(currentUser.getEmail());
+                binding.setStudentId("(" + maskingStudentId + ")");
+                binding.setIn(in);
+
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                Log.d("GetUserDataProfile", e.getMessage());
+            }
+        });
 
         // 개인정보 수정 버튼
         Button editButton = findViewById(R.id.edit);
@@ -114,6 +105,8 @@ public class ProfilePage extends AppCompatActivity {
         notiButton.setOnClickListener(view -> {
             Utils.gotoPage(getApplicationContext(), NotificationPage.class);
         });
+
+        // 메시지 이동
     }
     public String bitmapToString(Bitmap bitmap){
         String image = "";
