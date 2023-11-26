@@ -17,9 +17,9 @@ public class Message {
 
     // Constructor
     protected Message() {}
-    protected Message(String id, String receiverId, String senderId, String title,
-                    String content, Date date, List<String> replies,
-                    List<String> files, boolean isRead) {
+    public Message(String id, String receiverId, String senderId, String title,
+                   String content, Date date, List<String> replies,
+                   List<String> files, boolean isRead) {
         this.id = id;
         this.receiverId = receiverId;
         this.senderId = senderId;
