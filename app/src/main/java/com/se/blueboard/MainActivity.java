@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             listA.add("t1");
             listA.add("t2");
 
-            User user = new User("abc1", "test", "test", "test", "test", "test", "test", listA, null, null, null, 1, 1);
+            User user = new User("abc1", "test", "test", "test", "test", "test", "test", listA, null, null, null, 1, 1, 1);
             FirebaseController controller = new FirebaseController();
             Message m1 = Message.makeMessage("1", "abc2", "abc5", "과제 안내", "과제가 일주일 연장 되었습니다.", new Date(), null, null, true);
             controller.sendMessageData(m1);
