@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:gravity="center"
+    app:layout_constraintCircleRadius="10dp">
+
+    <Button
+        android:id="@+id/goto_edit"
+        android:layout_width="50dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="35dp"
+        android:background="#00ff0000"
+        android:backgroundTintMode="add"
+        android:contentDescription="메일 선택해서 삭제"
+        android:fontFamily="@font/roboto_regular"
+        android:text="편집"
+        android:textColor="#0478FF"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:circularflow_radiusInDP="10do" />
+
+    <Button
+        android:id="@+id/filter_all"
+        android:layout_width="48dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="8dp"
+        android:background="#00ff0000"
+        android:backgroundTintMode="add"
+        android:fontFamily="@font/roboto_regular"
+        android:text="전체"
+        android:textColor="#0478FF"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toStartOf="@id/filter_received"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/message_searchMessage"
+        tools:circularflow_radiusInDP="10do" />
+
+    <Button
+        android:id="@+id/filter_send"
+        android:layout_width="80dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:background="#00ff0000"
+        android:backgroundTintMode="add"
+        android:fontFamily="@font/roboto_regular"
+        android:text="보낸 메시지"
+        android:textColor="#0478FF"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toStartOf="@id/filter_unread"
+        app:layout_constraintStart_toEndOf="@+id/filter_received"
+        app:layout_constraintTop_toBottomOf="@+id/message_searchMessage"
+        tools:circularflow_radiusInDP="10do" />
+
+    <Button
+        android:id="@+id/filter_unread"
+        android:layout_width="80dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:background="#00ff0000"
+        android:backgroundTintMode="add"
+        android:fontFamily="@font/roboto_regular"
+        android:text="읽지 않음"
+        android:textColor="#0478FF"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toStartOf="@id/goto_write"
+        app:layout_constraintStart_toEndOf="@id/filter_send"
+        app:layout_constraintTop_toBottomOf="@+id/message_searchMessage"
+        tools:circularflow_radiusInDP="10do" />
+
+    <TextView
+        android:id="@+id/Page_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:fontFamily="@font/palanquindark_regular"
+        android:text="Message"
+        android:textAlignment="gravity"
+        android:textColor="#0A0B0B"
+        android:textSize="36dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <Button
+        android:id="@+id/filter_received"
+        android:layout_width="80dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:background="#00ff0000"
+        android:backgroundTintMode="add"
+        android:fontFamily="@font/roboto_regular"
+        android:text="받은 메시지"
+        android:textColor="#0478FF"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/filter_send"
+        app:layout_constraintStart_toEndOf="@id/filter_all"
+        app:layout_constraintTop_toBottomOf="@+id/message_searchMessage"
+        tools:circularflow_radiusInDP="10do" />
+
+    <SearchView
+        android:id="@+id/message_searchMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_search"
+        android:queryHint="검색"
+        android:radius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Page_name" />
+
+    <ImageButton
+        android:id="@+id/goto_write"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="15dp"
+        android:background="#00FF0000"
+        android:contentDescription="메시지 작성
+"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/filter_unread"
+        app:layout_constraintTop_toBottomOf="@+id/message_searchMessage"
+        app:srcCompat="@drawable/icon_write" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigationBar"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:itemIconTint="#000000"
+        app:itemTextColor="#000000"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/navigation_menu" >
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/MailList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="MailList"
+        android:scrollbarFadeDuration="0"
+        android:scrollbars="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@id/navigationBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filter_received">
+
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
