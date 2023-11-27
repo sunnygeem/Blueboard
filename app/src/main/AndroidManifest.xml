@@ -46,6 +46,7 @@
         <activity android:name=".makeLecture.MakeLecturePageThree" />
         <activity android:name=".MessageBoxPage" />
         <activity android:name=".MessageSendPage" />
+        <activity android:name=".MessageViewPage" />
     </application>
 
 </manifest>
