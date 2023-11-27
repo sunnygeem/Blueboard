@@ -16,4 +16,9 @@
         <item>E학과</item>
     </string-array>
 
+    <string-array name="mg_array">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
 </resources>
