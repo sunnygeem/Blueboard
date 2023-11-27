@@ -20,10 +20,11 @@ public class Account {
     }
 
     // Named Constructor
-    public static Account makeAccount() {
+    public static Account makeAccount(String uid, String aid, String pw) {
         // named constructor
         // TODO: implement
-        return new Account(null, null, null, false, 0);
+
+        return new Account(uid, aid, pw, false, 0);
     }
 
     // Methods
