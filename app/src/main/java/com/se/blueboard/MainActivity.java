@@ -53,12 +53,12 @@ public class MainActivity extends AppCompatActivity {
             listA.add("t1");
             listA.add("t2");
 
-            User user = new User("abc1", "test", "test", "test", "test", "test", "test", listA, null, null, null, 1, 1);
+            User user = new User("abc5", "test", "test", "test", "test", "test", "test", listA, null, null, null, 1, 1);
             FirebaseController controller = new FirebaseController();
             // delete test
             // controller.deleteData("users", "abc1");
             // send test
-//            controller.sendUserData(user);
+            //controller.sendUserData(user);
             // get test
 //            controller.getUserData("abc1", new MyCallback() {
 //                @Override

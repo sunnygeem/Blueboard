@@ -1,18 +1,26 @@
 package com.se.blueboard;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentTransaction;
 
 import model.Account;
+import model.User;
+import utils.FirebaseController;
 import utils.Utils;
 
 import android.widget.Button;
@@ -26,65 +34,103 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
+import org.w3c.dom.Text;
+
 public class Create extends AppCompatActivity {
-    private FirebaseAuth auth = null;
-    private FirebaseAuth firebaseAuth;
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static String[] PERMISSIONS_STORAGE = {
+            android.Manifest.permission.READ_EXTERNAL_STORAGE,
+            android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            android.Manifest.permission.POST_NOTIFICATIONS
+    };
 
     private Button buttonCompleteRegister;
+    private Button buttonBackToLogin;
 
     // login 작업에 사용
     private EditText newID;
     private EditText newPW;
+    private EditText newCheckPW;
+
+    private EditText newName;
+    private EditText newGrade;
+    private EditText newNum;
+
+    private String newInst;
+    private String newDept;
 
 
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState){
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_account);
 
-        auth = FirebaseAuth.getInstance();
+
+        Spinner spinner = (Spinner)findViewById(R.id.select_institute);
+        newInst = spinner.getSelectedItem().toString();
+
+        Spinner spinner2 = (Spinner)findViewById(R.id.select_dept);
+        newDept = spinner.getSelectedItem().toString();
 
         newID = (EditText) findViewById(R.id.square_id);
         newPW = (EditText) findViewById(R.id.square_pw);
+        newCheckPW = (EditText) findViewById(R.id.square_pwcheck);
+        newName = (EditText) findViewById(R.id.square_name);
+        newGrade = (EditText) findViewById(R.id.square_grade);
+        newNum = (EditText) findViewById(R.id.square_num);
+
         buttonCompleteRegister =  (Button) findViewById(R.id.reg_complete);
         buttonCompleteRegister.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                createAccount(newID.getText().toString(), newPW.getText().toString());
+            @Override
+            public void onClick(View v) {
+                createAccount(
+                        newID.getText().toString(), newPW.getText().toString(), newCheckPW.getText().toString(), newName.getText().toString(), newInst, newDept, newGrade.getText().toString(), newNum.getText().toString()
+                );
             }
+        });
+
+        buttonBackToLogin = (Button)findViewById(R.id.backToLogin);
+        buttonBackToLogin.setOnClickListener(view->{
+                Utils.gotoPage(getApplicationContext(), LoginPage.class);
         });
     }
 
-    private void createAccount(String id, String pw){
-        if(!id.equals("") && !pw.equals("")){
-            if(!isValidPW(pw)){
+    private void createAccount(String id, String pw, String checkpw, String name, String inst, String dept, String grd, String num) {
+
+        verifyStoragePermissions(this);
+
+        FirebaseController controller = new FirebaseController();
+
+        if (!id.equals("") && !pw.equals("")) {
+            if (!isValidPW(pw)) {
                 Toast.makeText(
                         getApplicationContext(), "비밀번호는 영문, 숫자, 특수 문자를 포함한 8자리 문자여야 합니다.’", Toast.LENGTH_SHORT
                 ).show();
                 return;
             }
-            auth.createUserWithEmailAndPassword(id, pw).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(task.isSuccessful()){
-                        Toast.makeText(
-                                getBaseContext(), "회원가입이 완료되었습니다. 로그인 화면으로 돌아가 로그인하세요.", Toast.LENGTH_SHORT
-                        ).show();
+            if(!pw.equals(checkpw)){
+                Toast.makeText(
+                        getApplicationContext(), "비밀번호가 일치하지 않습니다.’", Toast.LENGTH_SHORT
+                ).show();
+                return;
+            }
 
-                        buttonCompleteRegister.setOnClickListener(view -> {
-                            Utils.gotoPage(getApplicationContext(), LoginPage.class);
-                        });
-                    }
-                    else{
-                        // 회원가입 오류
-                        if(task.getException() instanceof FirebaseAuthUserCollisionException){
-                            Toast.makeText(
-                                    getApplicationContext(), "중복된 아이디입니다.", Toast.LENGTH_SHORT
-                            ).show();
-                        }
-                    }
-                }
+
+            buttonCompleteRegister.setOnClickListener(view -> {
+                User user = User.makeUser(null, id, name, inst, dept, null, null, null, null, null, null, Integer.parseInt(grd), Integer.parseInt(num));
+                controller.sendUserData(user);
+
+                 // 회원가입 완료
+                Toast.makeText(
+                        getApplicationContext(), "회원가입이 완료되었습니다. 로그인 화면으로 돌아가 로그인하세요.", Toast.LENGTH_SHORT
+                ).show();
+                Utils.gotoPage(getApplicationContext(), LoginPage.class);
             });
+
+
         }
     }
 
@@ -92,5 +138,19 @@ public class Create extends AppCompatActivity {
         // 영문, 숫자, 특수문자 조합의 8자리 이상인지 확인
         String regex = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$";
         return pw.matches(regex);
+    }
+
+    public static void verifyStoragePermissions(Activity activity) {
+        // Check if we have write permission
+        int permission = ActivityCompat.checkSelfPermission(activity, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            // We don't have permission so prompt the user
+            ActivityCompat.requestPermissions(
+                    activity,
+                    PERMISSIONS_STORAGE,
+                    REQUEST_EXTERNAL_STORAGE
+            );
+        }
     }
 }
