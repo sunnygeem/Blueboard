@@ -199,7 +199,6 @@ public class MessageBoxPage extends AppCompatActivity {
                         }
                     });
         });
-
         // navigation Bar
 //        Button Home = findViewById(R.id.)
     }

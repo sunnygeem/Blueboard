@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.se.blueboard.MainActivity;
 import com.se.blueboard.MessageSendPage;
+import com.se.blueboard.MessageViewPage;
 import com.se.blueboard.R;
 
 import java.text.SimpleDateFormat;
@@ -37,7 +38,7 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
             blueCircle = v.findViewById(R.id.Blue_Circle);
 
             v.setOnClickListener(view -> {
-                Utils.gotoPage(mContext, MessageSendPage.class);
+                Utils.gotoPage(mContext, MessageViewPage.class);
             });
         }
     }
@@ -75,7 +76,6 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
         else
             holder.blueCircle.setVisibility(View.VISIBLE);
     }
-
     @Override
     public int getItemCount() {
         return mDataset.size();
