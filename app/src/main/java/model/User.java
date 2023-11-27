@@ -1,4 +1,7 @@
 package model;
+import android.util.Log;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
@@ -51,7 +54,23 @@ public class User {
                                 String major, String email, String profile, List<String> courses,
                                 List<String> sentMessages, List<String> receivedMessages,
                                 List<String> alarms, int grade, long studentId, int isManager) {
-        return new User(id, accountId, name, institution, major, email, profile, courses, sentMessages, receivedMessages, alarms, grade, studentId, isManager);
+        List<String> received, sent;
+
+        if(receivedMessages == null) {
+            received = new ArrayList<>();
+        }
+        else {
+            received = receivedMessages;
+        }
+
+        if(sentMessages == null) {
+            sent = new ArrayList<>();
+        }
+        else {
+            sent = sentMessages;
+        }
+
+        return new User(id, accountId, name, institution, major, email, profile, courses, sent, received, alarms, grade, studentId, isManager);
     }
 
     // Methods
@@ -135,4 +154,20 @@ public class User {
     }
 
     public int getIsManager(){ return this.isManager; }
+  
+    public void addReceived(String id) {
+        if (id == null) {
+            Log.d("addReceived: ", "NULL");
+        }else {
+            this.receivedMessages.add(id);
+        }
+    }
+
+    public void addSent(String id) {
+        if (id == null) {
+            Log.d("addSent: ", "NULL");
+        }else{
+            this.sentMessages.add(id);
+        }
+    }
 }

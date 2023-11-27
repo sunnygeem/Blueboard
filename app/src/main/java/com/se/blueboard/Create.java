@@ -72,7 +72,7 @@ public class Create extends AppCompatActivity {
                         ).show();
 
                         buttonCompleteRegister.setOnClickListener(view -> {
-                            Utils.gotoPage(getApplicationContext(), LoginPage.class);
+                            Utils.gotoPage(getApplicationContext(), LoginPage.class, null);
                         });
                     }
                     else{

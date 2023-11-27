@@ -28,7 +28,7 @@ public class MakeLecturePageTwo extends AppCompatActivity {
         // 뒤로 가기 버튼
         Button backButton = findViewById(R.id.makeLecture_gotoBack);
         backButton.setOnClickListener(view -> {
-            Utils.gotoPage(getApplicationContext(), MakeLecturePageOne.class);
+            Utils.gotoPage(getApplicationContext(), MakeLecturePageOne.class, null);
         });
 
         // Current Lecture
@@ -54,7 +54,7 @@ public class MakeLecturePageTwo extends AppCompatActivity {
         nextButton.setOnClickListener(view -> {
             makingLecture.setWeeks(weeks.getText().toString());
             makingLecture.setMaxStudents(maxUsers.getText().toString());
-            Utils.gotoPage(getApplicationContext(), MakeLecturePageThree.class);
+            Utils.gotoPage(getApplicationContext(), MakeLecturePageThree.class, null);
         });
 
     }

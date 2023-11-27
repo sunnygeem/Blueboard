@@ -17,9 +17,9 @@ public class Message {
 
     // Constructor
     protected Message() {}
-    public Message(String id, String receiverId, String senderId, String title,
-                   String content, Date date, List<String> replies,
-                   List<String> files, boolean isRead) {
+    protected Message(String id, String receiverId, String senderId, String title,
+                    String content, Date date, List<String> replies,
+                    List<String> files, boolean isRead) {
         this.id = id;
         this.receiverId = receiverId;
         this.senderId = senderId;
@@ -37,7 +37,11 @@ public class Message {
         // TODO: implement
         return new Message(null, null, null, null, null, null, null, null, false);
     }
-
+    public static Message makeMessage(String id, String receiverId, String senderId, String title,
+                                      String content, Date date, List<String> replies,
+                                      List<String> files, boolean isRead) {
+        return new Message(id, receiverId, senderId, title, content, date, replies, files, isRead);
+    }
     // Methods
     public void sendMsg(List<String> receivers) {
         // 메시지 보내기, DB에 저장해두기. 여러 명에게 보낼 수 있음.

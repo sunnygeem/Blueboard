@@ -90,7 +90,7 @@ public class EditProfilePage extends AppCompatActivity {
                         Log.d("EditProfile", "sendUserData");
 
                         // 프로필 페이지로 이동
-                        Utils.gotoPage(getApplicationContext(), ProfilePage.class);
+                        Utils.gotoPage(getApplicationContext(), ProfilePage.class, null);
                     }
                 });
             }
@@ -103,7 +103,7 @@ public class EditProfilePage extends AppCompatActivity {
 
         Button homeButton = findViewById(R.id.icon_home);
         homeButton.setOnClickListener(view -> {
-            Utils.gotoPage(getApplicationContext(), HomePage.class);
+            Utils.gotoPage(getApplicationContext(), HomePage.class, null);
         });
 
         // TODO: 아이콘 클릭 시 메시지, 알림 페이지 이동

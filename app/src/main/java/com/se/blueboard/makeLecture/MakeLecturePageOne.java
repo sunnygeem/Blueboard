@@ -78,7 +78,7 @@ public class MakeLecturePageOne extends AppCompatActivity {
                 String[] temp = selectedLecture.split("\t");
                 makingLecture.setId(temp[0]);
                 makingLecture.setName(temp[1]);
-                Utils.gotoPage(getApplicationContext(), MakeLecturePageTwo.class);
+                Utils.gotoPage(getApplicationContext(), MakeLecturePageTwo.class, null);
             }
         });
     }

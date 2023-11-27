@@ -42,7 +42,7 @@ public class MakeLecturePageThree extends AppCompatActivity {
         // 뒤로 가기 버튼
         Button backButton = (Button) findViewById(R.id.makeLecture_gotoBackThree);
         backButton.setOnClickListener(view -> {
-            Utils.gotoPage(getApplicationContext(), MakeLecturePageTwo.class);
+            Utils.gotoPage(getApplicationContext(), MakeLecturePageTwo.class, null);
         });
 
         // 현재 manager 수 출력
@@ -119,7 +119,7 @@ public class MakeLecturePageThree extends AppCompatActivity {
         // 다음 버튼
         Button makeButton = (Button) findViewById(R.id.makeLecture_nextPageFour);
         makeButton.setOnClickListener(view -> {
-            Utils.gotoPage(getApplicationContext(), MakeLecturePageFour.class);
+            Utils.gotoPage(getApplicationContext(), MakeLecturePageFour.class, null);
         });
     }
 }
