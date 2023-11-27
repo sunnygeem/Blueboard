@@ -1,6 +1,7 @@
 *.iml
 .gradle
 build.gradle
+build.gradle_origin
 gradle/wrapper/gradle-wrapper.properties
 app/google-services.json
 /local.properties

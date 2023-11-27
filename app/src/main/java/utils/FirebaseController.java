@@ -12,6 +12,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
@@ -367,6 +368,11 @@ public class FirebaseController {
                     public void onSuccess(Void aVoid) {
                         // Data has been added successfully
                         Log.d("FirebaseController", "Message data added successfully");
+                        db.collection("users").document(message.getSenderId())
+                                .update("sendMessages", FieldValue.arrayUnion(message.getId()));
+
+                        db.collection("users").document(message.getReceiverId())
+                                .update("receivedMessages", FieldValue.arrayUnion(message.getId()));
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

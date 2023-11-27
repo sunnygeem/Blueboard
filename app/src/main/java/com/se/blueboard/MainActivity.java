@@ -20,10 +20,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import model.Message;
 import utils.MyCallback;
 import utils.Utils;
 import model.User;
@@ -32,6 +34,7 @@ import utils.Utils;
 
 public class MainActivity extends AppCompatActivity {
     private static Context context;
+    public static User loginUser;
     // 앱 실행시 권한 허가 필요
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
@@ -45,6 +48,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         verifyStoragePermissions(this);
+        List<String> courses = new ArrayList<>();
+        courses.add("t1");
+        courses.add("t2");
+        List<String> sent = new ArrayList<>();
+        sent.add("2");
+        List<String> received = new ArrayList<>();
+        received.add("1");
+        loginUser = User.makeUser("abc2", "test22222", "짱구", "test", "test", "test", "test", courses, sent, received, null, 1, 1 );
+
         // Firestore test
         Button firestoreButton = findViewById(R.id.firestore);
         firestoreButton.setOnClickListener(v -> {
@@ -55,6 +67,11 @@ public class MainActivity extends AppCompatActivity {
 
             User user = new User("abc1", "test", "test", "test", "test", "test", "test", listA, null, null, null, 1, 1);
             FirebaseController controller = new FirebaseController();
+            Message m1 = Message.makeMessage("1", "abc2", "abc5", "과제 안내", "과제가 일주일 연장 되었습니다.", new Date(), null, null, true);
+            controller.sendMessageData(m1);
+
+            Message m2 = Message.makeMessage("2", "abc5", "abc2", "과제 제출", "과제 제출합니다.", new Date(), null, null, false);
+            controller.sendMessageData(m2);
             // delete test
             // controller.deleteData("users", "abc1");
             // send test
@@ -81,8 +98,8 @@ public class MainActivity extends AppCompatActivity {
 
 //            File file = new File("/storage/emulated/0/Pictures/IMG_20231123_182503.jpg");
 //            controller.uploadFile(file);
-            String name = "1-CourseIntro.pdf";
-            controller.downloadFile(name);
+//            String name = "1-CourseIntro.pdf";
+//            controller.downloadFile(name);
 //            Log.d("TestTest", Environment.DIRECTORY_DOWNLOADS);
         });
 
@@ -96,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
         Button announcementButton = findViewById(R.id.announcement);
         announcementButton.setOnClickListener(view -> {
             Utils.gotoPage(getApplicationContext(), AnnouncementPage.class);
-            
+
         });
 
         // Attendance button
@@ -132,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
         // Message button
         Button messageButton = findViewById(R.id.message);
         messageButton.setOnClickListener(view -> {
-            Utils.gotoPage(getApplicationContext(), MessagePage.class);
+            Utils.gotoPage(getApplicationContext(), MessageBoxPage.class);
         });
 
         // Profile button
