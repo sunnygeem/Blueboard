@@ -170,4 +170,8 @@ public class User {
             this.sentMessages.add(id);
         }
     }
+
+    public void addCourses(String id) {
+        this.courses.add(id);
+    }
 }
