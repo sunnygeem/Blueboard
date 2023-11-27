@@ -37,7 +37,7 @@ public class MakeLecturePageFour extends AppCompatActivity {
         // 뒤로 가기 버튼
         Button backButton = (Button) findViewById(R.id.makeLecture_gotoBackFour);
         backButton.setOnClickListener(view -> {
-            Utils.gotoPage(getApplicationContext(), MakeLecturePageTwo.class);
+            Utils.gotoPage(getApplicationContext(), MakeLecturePageThree.class, null);
         });
 
         // 현재 수강 인원 수 출력
@@ -113,7 +113,7 @@ public class MakeLecturePageFour extends AppCompatActivity {
         makeButton.setOnClickListener(view -> {
             FirebaseController controller = new FirebaseController();
             controller.updateData(makingLecture);
-            Utils.gotoPage(getApplicationContext(), HomePage.class);
+            Utils.gotoPage(getApplicationContext(), HomePage.class, null);
         });
     }
 }
