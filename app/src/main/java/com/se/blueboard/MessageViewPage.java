@@ -31,11 +31,17 @@ public class MessageViewPage extends AppCompatActivity {
             @Override
             public void onSuccess(Object object) {
                 Message message = (Message) object;
+
                 // 삭제 버튼
                 Button delete = findViewById(R.id.icon_delete);
                 delete.setOnClickListener(view -> {
                 message.deleteMsg(message.getReceiverId()==MainActivity.loginUser.getId());
                 });
+
+                // TODO: 답장 버튼
+
+                // TODO: more 버튼, 없애도 될듯?
+
 
                 //debug
                 Log.d("MainActivity.loginUser", MainActivity.loginUser.getId());
