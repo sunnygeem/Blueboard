@@ -51,7 +51,9 @@ public class MessageViewPage extends AppCompatActivity {
                     controller.getUserData(message.getSenderId(), new MyCallback() {
                         @Override
                         public void onSuccess(Object object) {
-                            TextView sender = findViewById(R.id.textViewSenderName);
+                            TextView sender = findViewById(R.id.textViewPersonName);
+                            TextView isSender = findViewById(R.id.textViewSenderOrReceiver);
+                            isSender.setText("From :");
                             sender.setText(((model.User) object).getName());
                         }
 
@@ -66,7 +68,9 @@ public class MessageViewPage extends AppCompatActivity {
                     controller.getUserData(message.getReceiverId(), new MyCallback() {
                         @Override
                         public void onSuccess(Object object) {
-                            TextView receiver = findViewById(R.id.textViewSenderName);
+                            TextView receiver = findViewById(R.id.textViewPersonName);
+                            TextView isReceiver = findViewById(R.id.textViewSenderOrReceiver);
+                            isReceiver.setText("To :");
                             receiver.setText(((model.User) object).getName());
                         }
 

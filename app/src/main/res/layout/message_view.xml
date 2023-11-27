@@ -71,34 +71,47 @@
         android:src="@drawable/profile_circle"
         app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
 
-    <!-- 발신자 이름 -->
-
-    <!-- 날짜 -->
+    <!-- 발신자인지 수신자인지 -->
     <TextView
-        android:id="@+id/textViewSenderName"
+        android:id="@+id/textViewSenderOrReceiver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:text="발신자"
+        android:text="To or Send"
         android:layout_marginLeft="75dp"
         android:layout_marginBottom="18dp"
         android:textColor="#000000"
         android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageViewProfile"
         app:layout_constraintStart_toStartOf="@+id/imageViewProfile" />
 
+    <!-- 발신자/수신자 이름 -->
+    <TextView
+        android:id="@+id/textViewPersonName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="18dp"
+        android:layout_marginLeft="10dp"
+        android:text="발신자/수신자"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewProfile"
+        app:layout_constraintStart_toEndOf="@+id/textViewSenderOrReceiver" />
+
+    <!-- 날짜 -->
     <TextView
         android:id="@+id/textViewDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/textViewSenderName"
-        android:text="날짜"
-        android:layout_marginLeft="13dp"
         android:layout_marginBottom="18dp"
+        android:layout_marginLeft="10dp"
+        android:text="날짜"
         android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageViewProfile"
-        app:layout_constraintStart_toEndOf="@+id/textViewSenderName" />
+        app:layout_constraintStart_toEndOf="@+id/textViewPersonName" />
 
     <Button
         android:id="@+id/icon_reply"
