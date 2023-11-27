@@ -24,7 +24,7 @@ public class MakeLecturePageThree extends AppCompatActivity {
         // 뒤로 가기 버튼
         Button backButton = (Button) findViewById(R.id.makeLecture_gotoBackThree);
         backButton.setOnClickListener(view -> {
-            Utils.gotoPage(getApplicationContext(), MakeLecturePageTwo.class);
+            Utils.gotoPage(getApplicationContext(), MakeLecturePageTwo.class, null);
         });
 
         TextView learningStudents = (TextView) findViewById(R.id.makeLecture_learningStudents);
@@ -35,7 +35,7 @@ public class MakeLecturePageThree extends AppCompatActivity {
         makeButton.setOnClickListener(view -> {
             FirebaseController controller = new FirebaseController();
             controller.updateData(makingLecture);
-            Utils.gotoPage(getApplicationContext(), HomePage.class);
+            Utils.gotoPage(getApplicationContext(), HomePage.class, null);
         });
     }
 }
