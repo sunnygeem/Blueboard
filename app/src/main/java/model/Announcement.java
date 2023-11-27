@@ -13,7 +13,7 @@ public class Announcement {
     private List<String> comments;
 
     // Constructor
-    private Announcement(String id, String detail, Date uploadTime,
+    public Announcement(String id, String detail, Date uploadTime,
                          List<String> files, String title, List<String> comments) {
         this.id = id;
         this.detail = detail;
