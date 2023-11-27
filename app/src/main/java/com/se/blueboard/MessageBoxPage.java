@@ -56,7 +56,7 @@ public class MessageBoxPage extends AppCompatActivity {
         collectionRef = db.collection("messages");
         FirebaseController controller = new FirebaseController();
 
-        mAdapter = new MessageListAdapter(messageList);
+        mAdapter = new MessageListAdapter(this, messageList);
         recyclerView.setAdapter(mAdapter);
 //        controller.getMessageData();
 //        String str = "2023-11-26 18:10:55";

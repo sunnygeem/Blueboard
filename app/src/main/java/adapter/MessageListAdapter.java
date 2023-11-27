@@ -1,5 +1,6 @@
 package adapter;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.se.blueboard.MainActivity;
+import com.se.blueboard.MessageSendPage;
 import com.se.blueboard.R;
 
 import java.text.SimpleDateFormat;
@@ -17,10 +19,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Message;
+import utils.Utils;
 
 public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.MyViewHolder> {
+    private Context mContext;
     private List<Message> mDataset = new ArrayList<>();
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView sender, subject, date, content;
         public ImageView blueCircle;
 
@@ -31,10 +35,15 @@ public class MessageListAdapter extends RecyclerView.Adapter<MessageListAdapter.
             date = v.findViewById(R.id.Date);
             content = v.findViewById(R.id.Content);
             blueCircle = v.findViewById(R.id.Blue_Circle);
+
+            v.setOnClickListener(view -> {
+                Utils.gotoPage(mContext, MessageSendPage.class);
+            });
         }
     }
     // 배열 데이터를 받는 생성자
-    public MessageListAdapter(List<Message> myDataset) {
+    public MessageListAdapter(Context myContext, List<Message> myDataset) {
+        mContext = myContext;
         mDataset = myDataset;
     }
 
