@@ -130,7 +130,6 @@ public class Create extends AppCompatActivity {
                 Utils.gotoPage(getApplicationContext(), LoginPage.class);
             });
 
-
         }
     }
 

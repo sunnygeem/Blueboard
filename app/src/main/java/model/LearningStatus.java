@@ -24,7 +24,11 @@ public class LearningStatus {
         // TODO: implement
         return new LearningStatus(null, null, null, null, null);
     }
-
+    public static LearningStatus makeLearningStatus(String id, String userId, String courseId, String contentId, String status) {
+        // named constructor
+        // TODO: implement
+        return new LearningStatus(id, userId, courseId, contentId, status);
+    }
     // Methods
     public void setStatus(String newStatus) {
         // 출석, 지각, 결석 상태를 set

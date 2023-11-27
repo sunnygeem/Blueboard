@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/message_send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/message_send" />
+
+    <Button
+        android:id="@+id/icon_close"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignTop="@+id/message_send"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="33dp"
+        android:background="@drawable/icon_close" />
+
+    <EditText
+        android:id="@+id/editTextRecipient"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/message_send"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="10dp"
+        android:hint="수신자"
+        android:fontFamily="@font/palanquin_light"
+        android:inputType="textPersonName"
+        android:maxLines="1"
+        android:background="@drawable/edittext_no_bottom_line" />
+
+    <!-- 얇은 선 -->
+    <View
+        android:id="@+id/dividerLine1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/editTextRecipient"
+        android:layout_alignStart="@+id/message_send"
+        android:layout_alignEnd="@+id/message_send"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="5dp"
+        android:background="#CCCCCC" />
+
+    <EditText
+        android:id="@+id/editTextTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="제목"
+        android:fontFamily="@font/palanquin_light"
+        android:layout_marginLeft="10dp"
+        android:inputType="text"
+        android:maxLines="1"
+        android:layout_below="@+id/editTextRecipient"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/edittext_no_bottom_line" />
+
+    <!-- 얇은 선 -->
+    <View
+        android:id="@+id/dividerLine2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/editTextTitle"
+        android:layout_alignStart="@+id/message_send"
+        android:layout_alignEnd="@+id/message_send"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="5dp"
+        android:background="#CCCCCC" />
+
+    <EditText
+        android:id="@+id/editTextContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="내용"
+        android:fontFamily="@font/palanquin_light"
+        android:layout_marginLeft="10dp"
+        android:inputType="textMultiLine"
+        android:layout_below="@+id/editTextTitle"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/edittext_no_bottom_line"
+        />
+
+    <Button
+        android:id="@+id/buttonSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/message_send"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="40dp"
+        android:text="보내기"
+        android:fontFamily="@font/palanquin_light"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/button_rounded_background" />
+
+    <Button
+        android:id="@+id/icon_file"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_alignBottom="@+id/message_send"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="45dp"
+        android:layout_toEndOf="@+id/buttonSend"
+        android:background="@drawable/icon_file" />
+</RelativeLayout>

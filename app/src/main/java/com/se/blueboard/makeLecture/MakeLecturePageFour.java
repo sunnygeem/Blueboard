@@ -1,6 +1,5 @@
 package com.se.blueboard.makeLecture;
 
-import static com.se.blueboard.HomePage.currentUser;
 import static com.se.blueboard.makeLecture.MakeLecturePageOne.makingLecture;
 
 import android.os.Bundle;
@@ -13,16 +12,12 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.se.blueboard.HomePage;
 import com.se.blueboard.R;
@@ -33,41 +28,40 @@ import model.User;
 import utils.FirebaseController;
 import utils.Utils;
 
-public class MakeLecturePageThree extends AppCompatActivity {
+public class MakeLecturePageFour extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.make_lecture_page_three);
+        setContentView(R.layout.make_lecture_page_four);
 
         // 뒤로 가기 버튼
-        Button backButton = (Button) findViewById(R.id.makeLecture_gotoBackThree);
+        Button backButton = (Button) findViewById(R.id.makeLecture_gotoBackFour);
         backButton.setOnClickListener(view -> {
-            Utils.gotoPage(getApplicationContext(), MakeLecturePageTwo.class, null);
+            Utils.gotoPage(getApplicationContext(), MakeLecturePageTwo.class);
         });
 
-        // 현재 manager 수 출력
-        TextView currentManagers = (TextView) findViewById(R.id.makeLecture_managers);
-        // +1은 현재 유저
-        currentManagers.setText(Integer.toString(makingLecture.getManagers().size() + 1));
+        // 현재 수강 인원 수 출력
+        TextView learningStudents = (TextView) findViewById(R.id.makeLecture_learningStudents);
+        learningStudents.setText(makingLecture.getStudents().size() + " / " + makingLecture.getMaxStudents());
 
-        // 관리자 목록 가져오기
+        // 사용자 검색 기능
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        ArrayList<String> managerList = new ArrayList<>();
+        ArrayList<String> studentList = new ArrayList<>();
 
         db.collection("users")
-                .whereEqualTo("isManager", 1)
+                .whereEqualTo("isManager", 0)
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         for (DocumentSnapshot document: queryDocumentSnapshots.getDocuments()) {
                             if (document.exists()) {
-                                managerList.add(document.toObject(User.class).getStudentId() + "\t" + document.toObject(User.class).getName());
+                                studentList.add(document.toObject(User.class).getStudentId() + "\t" + document.toObject(User.class).getName());
                                 Log.d("successGetManagerList", document.toObject(User.class).toString());
 
                                 // 관리자 ListView
                                 ListView listView = findViewById(R.id.makeLecture_setManagers);
-                                ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, managerList);
+                                ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, studentList);
 
                                 // 관리자 검색 기능
                                 SearchView searchView = (SearchView) findViewById(R.id.makeLecture_searchManager);
@@ -79,8 +73,8 @@ public class MakeLecturePageThree extends AppCompatActivity {
                                     @Override
                                     public boolean onQueryTextChange(String s) {
                                         ArrayList<String> filteredManagerList = new ArrayList<>();
-                                        for (int i = 0; i < managerList.size(); i++) {
-                                            String manager = managerList.get(i);
+                                        for (int i = 0; i < studentList.size(); i++) {
+                                            String manager = studentList.get(i);
 
                                             if (manager.toLowerCase().contains(s.toLowerCase()))
                                                 filteredManagerList.add(manager);
@@ -99,12 +93,12 @@ public class MakeLecturePageThree extends AppCompatActivity {
                                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
                                     @Override
                                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                        Utils.toastTest(getApplicationContext(), "good?");
-                        //                String selectedLecture = (String) listView.getItemAtPosition(i);
-                        //                String[] temp = selectedLecture.split("\t");
-                        //                makingLecture.setId(temp[0]);
-                        //                makingLecture.setName(temp[1]);
-                        //                Utils.gotoPage(getApplicationContext(), MakeLecturePageTwo.class);
+                                        Utils.toastTest(getApplicationContext(), "studentList?");
+                                        //                String selectedLecture = (String) listView.getItemAtPosition(i);
+                                        //                String[] temp = selectedLecture.split("\t");
+                                        //                makingLecture.setId(temp[0]);
+                                        //                makingLecture.setName(temp[1]);
+                                        //                Utils.gotoPage(getApplicationContext(), MakeLecturePageTwo.class);
                                     }
                                 });
                             }
@@ -114,12 +108,12 @@ public class MakeLecturePageThree extends AppCompatActivity {
                     }
                 });
 
-
-
-        // 다음 버튼
-        Button makeButton = (Button) findViewById(R.id.makeLecture_nextPageFour);
+        // 생성 버튼
+        Button makeButton = (Button) findViewById(R.id.makeLecture_makeLectureButton);
         makeButton.setOnClickListener(view -> {
-            Utils.gotoPage(getApplicationContext(), MakeLecturePageFour.class, null);
+            FirebaseController controller = new FirebaseController();
+            controller.updateData(makingLecture);
+            Utils.gotoPage(getApplicationContext(), HomePage.class);
         });
     }
 }
