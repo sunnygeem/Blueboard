@@ -33,8 +33,8 @@ public class MessagePage extends AppCompatActivity {
 
         // Initialize the messageList with sample data
         messageList = new ArrayList<>();
-        messageList.add(new Message("1", "Sender1", "Receiver1", "Title1", "Content1", new Date(), null, null, false));
-        messageList.add(new Message("2", "Sender2", "Receiver2", "Title2", "Content2", new Date(), null, null, true));
+        messageList.add(Message.makeMessage("1", "Sender1", "Receiver1", "Title1", "Content1", new Date(), null, null, false));
+        messageList.add(Message.makeMessage("2", "Sender2", "Receiver2", "Title2", "Content2", new Date(), null, null, true));
         // Add more messages as needed
 
         // Initialize the MessageAdapter
