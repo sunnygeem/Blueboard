@@ -124,11 +124,11 @@ public class Utils implements Utilities {
         }
     }
 
-    public static void gotoPage(Context curContext, Class<?> page) {
+    public static void gotoPage(Context curContext, Class<?> page, String key) {
         // 해당 페이지로 이동(포워딩)
-        // TODO: implement
         Intent intent = new Intent(curContext, page);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("key", key);
         curContext.startActivity(intent);
     }
 

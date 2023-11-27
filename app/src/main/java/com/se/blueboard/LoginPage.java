@@ -46,7 +46,7 @@ public class LoginPage extends AppCompatActivity {
         // 회원가입
         buttonRegister = (Button) findViewById(R.id.register_bt);
         buttonRegister.setOnClickListener(view -> {
-            Utils.gotoPage(getApplicationContext(), Create.class);
+            Utils.gotoPage(getApplicationContext(), Create.class, null);
         });
 
         // 로그인
@@ -70,7 +70,7 @@ public class LoginPage extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
                         buttonLogin.setOnClickListener(view -> {
-                            Utils.gotoPage(getApplicationContext(), HomePage.class);
+                            Utils.gotoPage(getApplicationContext(), HomePage.class, null);
                         });
                     }
                     else{
