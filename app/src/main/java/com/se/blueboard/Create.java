@@ -110,7 +110,6 @@ public class Create extends AppCompatActivity {
         verifyStoragePermissions(this);
 
         FirebaseController controller = new FirebaseController();
-
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("accounts")
                 .document(id)
