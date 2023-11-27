@@ -38,14 +38,6 @@ public class MakeLecturePageTwo extends AppCompatActivity {
         EditText weeks = (EditText) findViewById(R.id.makeLecture_weeksEditText);
         weeks.setText(makingLecture.getWeeks());
 
-
-        // 관리자 추가 버튼 구현 필요
-        ArrayList<String> adminList = new ArrayList();
-        Button addAdminButton = (Button) findViewById(R.id.makeLecture_adminButton);
-        addAdminButton.setOnClickListener(view -> {
-            Utils.toastTest(getApplicationContext(), "addAdminList");
-        });
-
         // 수강 가능 인원 - 양식 체크 구현 필요
         EditText maxUsers = (EditText) findViewById(R.id.makeLecture_maxUsersEditText);
         maxUsers.setText(makingLecture.getMaxStudents());

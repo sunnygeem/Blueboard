@@ -84,7 +84,7 @@ public class EditProfilePage extends AppCompatActivity {
                         User editUser = User.makeUser(currentUser.getId(), currentUser.getAccountId(), editName, currentUser.getInstitution(),
                                 currentUser.getMajor(), editMail.getText().toString(), imgString, currentUser.getCourses(),
                                 currentUser.getSentMessages(), currentUser.getReceivedMessages(), currentUser.getAlarms(),
-                                currentUser.getGrade(), currentUser.getStudentId());
+                                currentUser.getGrade(), currentUser.getStudentId(), currentUser.getIsManager());
 
                         controller.sendUserData(editUser);
                         Log.d("EditProfile", "sendUserData");

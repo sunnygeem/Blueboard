@@ -16,13 +16,14 @@ public class User {
     private List<String> alarms;
     private int grade;
     private long studentId;
+    private int isManager;
 
     // Constructor
     // Firebase test 위해서 public으로 임시변경
     public User(String id, String accountId, String name, String institution,
                 String major, String email, String profile, List<String> courses,
                 List<String> sentMessages, List<String> receivedMessages,
-                List<String> alarms, int grade, long studentId) {
+                List<String> alarms, int grade, long studentId, int isManager) {
         this.id = id;
         this.accountId = accountId;
         this.name = name;
@@ -36,6 +37,7 @@ public class User {
         this.alarms = alarms;
         this.grade = grade;
         this.studentId = studentId;
+        this.isManager = isManager;
     }
     private User() {}
     // Named Constructor
@@ -48,8 +50,8 @@ public class User {
     public static User makeUser(String id, String accountId, String name, String institution,
                                 String major, String email, String profile, List<String> courses,
                                 List<String> sentMessages, List<String> receivedMessages,
-                                List<String> alarms, int grade, long studentId) {
-        return new User(id, accountId, name, institution, major, email, profile, courses, sentMessages, receivedMessages, alarms, grade, studentId);
+                                List<String> alarms, int grade, long studentId, int isManager) {
+        return new User(id, accountId, name, institution, major, email, profile, courses, sentMessages, receivedMessages, alarms, grade, studentId, isManager);
     }
 
     // Methods
@@ -131,4 +133,6 @@ public class User {
     public long getStudentId() {
         return studentId;
     }
+
+    public int getIsManager(){ return this.isManager; }
 }
