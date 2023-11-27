@@ -36,10 +36,8 @@ public class Post extends LectureContent {
     // Methods (If additional methods are needed for Post, add them here)
 
     // getter
-    public Date getUploadTime() {
-        return uploadTime;
-    }
     public String getLectureId() { return this.lectureId; }
+    public Date getUploadTime() { return uploadTime; }
     public List<String> getComments() {
         return comments;
     }
