@@ -23,6 +23,9 @@ public class MessageViewPage extends AppCompatActivity {
 
         FirebaseController controller = new FirebaseController();
 
+        // 디버그 프린트
+        System.out.println(getIntent().getStringExtra("key"));
+
         // 메시지 객체 받아오기
 //        Message message = Message.makeMessage(getIntent().getStringExtra("messageId"),)
         // 메시지 객체 받아오기
