@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -33,6 +34,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.w3c.dom.Text;
 
@@ -58,6 +61,7 @@ public class Create extends AppCompatActivity {
 
     private String newInst;
     private String newDept;
+    private String newIsMg;
 
 
 
@@ -73,7 +77,10 @@ public class Create extends AppCompatActivity {
         newInst = spinner.getSelectedItem().toString();
 
         Spinner spinner2 = (Spinner)findViewById(R.id.select_dept);
-        newDept = spinner.getSelectedItem().toString();
+        newDept = spinner2.getSelectedItem().toString();
+
+        Spinner spinner3 = (Spinner)findViewById(R.id.select_isMg);
+        newIsMg = spinner3.getSelectedItem().toString();
 
         newID = (EditText) findViewById(R.id.square_id);
         newPW = (EditText) findViewById(R.id.square_pw);
@@ -87,7 +94,7 @@ public class Create extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 createAccount(
-                        newID.getText().toString(), newPW.getText().toString(), newCheckPW.getText().toString(), newName.getText().toString(), newInst, newDept, newGrade.getText().toString(), newNum.getText().toString()
+                        newID.getText().toString(), newPW.getText().toString(), newCheckPW.getText().toString(), newName.getText().toString(), newInst, newDept, newGrade.getText().toString(), newNum.getText().toString(), Integer.parseInt(newIsMg)
                 );
             }
         });
@@ -98,39 +105,57 @@ public class Create extends AppCompatActivity {
         });
     }
 
-    private void createAccount(String id, String pw, String checkpw, String name, String inst, String dept, String grd, String num) {
+    private void createAccount(String id, String pw, String checkpw, String name, String inst, String dept, String grd, String num, int isManager) {
 
         verifyStoragePermissions(this);
 
         FirebaseController controller = new FirebaseController();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("accounts")
+                .document(id)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if(task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if(document.exists()) {
+                                Log.d("successGetAccountData", "Success to get accounts data on DB");
+                                Toast.makeText(getApplicationContext(), "중복된 계정입니다.", Toast.LENGTH_SHORT).show();
 
-        if (!id.equals("") && !pw.equals("")) {
-            if (!isValidPW(pw)) {
-                Toast.makeText(
-                        getApplicationContext(), "비밀번호는 영문, 숫자, 특수 문자를 포함한 8자리 문자여야 합니다.’", Toast.LENGTH_SHORT
-                ).show();
-                return;
-            }
-            if(!pw.equals(checkpw)){
-                Toast.makeText(
-                        getApplicationContext(), "비밀번호가 일치하지 않습니다.’", Toast.LENGTH_SHORT
-                ).show();
-                return;
-            }
+                            } else {
+                                if (!id.equals("") && !pw.equals("")) {
+                                    if (!isValidPW(pw)) {
+                                        Toast.makeText(
+                                                getApplicationContext(), "비밀번호는 영문, 숫자, 특수 문자를 포함한 8자리 문자여야 합니다.’", Toast.LENGTH_SHORT
+                                        ).show();
+                                        return;
+                                    }
+                                    if(!pw.equals(checkpw)){
+                                        Toast.makeText(
+                                                getApplicationContext(), "비밀번호가 일치하지 않습니다.’", Toast.LENGTH_SHORT
+                                        ).show();
+                                        return;
+                                    }
 
+                                    User user = User.makeUser(id, id, name, inst, dept, null, null, null, null, null, null, Integer.parseInt(grd), Integer.parseInt(num), isManager);
+                                    Log.d("User", user.toString());
+                                    controller.sendUserData(user);
+                                    Account userAcc = Account.makeAccount(id, id, pw);
+                                    controller.sendAccountData(userAcc);
 
-            buttonCompleteRegister.setOnClickListener(view -> {
-                User user = User.makeUser(null, id, name, inst, dept, null, null, null, null, null, null, Integer.parseInt(grd), Integer.parseInt(num), 0);
-                controller.sendUserData(user);
-
-                 // 회원가입 완료
-                Toast.makeText(
-                        getApplicationContext(), "회원가입이 완료되었습니다. 로그인 화면으로 돌아가 로그인하세요.", Toast.LENGTH_SHORT
-                ).show();
-                Utils.gotoPage(getApplicationContext(), LoginPage.class, null);
-            });
-
-        }
+                                    // 회원가입 완료
+                                    Toast.makeText(
+                                            getApplicationContext(), "회원가입이 완료되었습니다. 로그인 화면으로 돌아가 로그인하세요.", Toast.LENGTH_SHORT
+                                    ).show();
+                                    Utils.gotoPage(getApplicationContext(), LoginPage.class, null);
+                                }
+                            }
+                        } else {
+                            Log.d("failGetAccountData", "Fail to get accounts data on DB");
+                        }
+                    }
+                });
     }
 
     private boolean isValidPW(String pw){
