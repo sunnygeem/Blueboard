@@ -1,18 +1,18 @@
 package com.se.blueboard;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
+import java.text.SimpleDateFormat;
 
 import model.Message;
 import utils.FirebaseController;
+import utils.MyCallback;
 import utils.Utils;
 
 public class MessageViewPage extends AppCompatActivity {
@@ -23,13 +23,77 @@ public class MessageViewPage extends AppCompatActivity {
 
         FirebaseController controller = new FirebaseController();
 
-        // 디버그 프린트
-        System.out.println(getIntent().getStringExtra("key"));
+        String messageId = getIntent().getStringExtra("key");
 
-        // 메시지 객체 받아오기
-//        Message message = Message.makeMessage(getIntent().getStringExtra("messageId"),)
-        // 메시지 객체 받아오기
-//        controller.getMessageData(message);
+        // 메시지 정보 DB로부터 불러오기
+        controller.getMessageData(messageId, new MyCallback() {
+
+            @Override
+            public void onSuccess(Object object) {
+                Message message = (Message) object;
+                // 삭제 버튼
+                Button delete = findViewById(R.id.icon_delete);
+                delete.setOnClickListener(view -> {
+                message.deleteMsg(message.getReceiverId()==MainActivity.loginUser.getId());
+                });
+
+                //debug
+                Log.d("MainActivity.loginUser", MainActivity.loginUser.getId());
+
+                // 메시지 정보 불러오기
+                // 제목
+                TextView title = findViewById(R.id.textViewTitle);
+                title.setText(message.getTitle());
+
+                // 발신자 또는 수신자 이름
+                if(message.getReceiverId().equals(MainActivity.loginUser.getId())){
+                    // 발신자
+                    controller.getUserData(message.getSenderId(), new MyCallback() {
+                        @Override
+                        public void onSuccess(Object object) {
+                            TextView sender = findViewById(R.id.textViewSenderName);
+                            sender.setText(((model.User) object).getName());
+                        }
+
+                        @Override
+                        public void onFailure(Exception e) {
+                            Log.d("MessageViewPage sender", e.getMessage());
+                        }
+                    });
+                }
+                else{
+                    // 수신자
+                    controller.getUserData(message.getReceiverId(), new MyCallback() {
+                        @Override
+                        public void onSuccess(Object object) {
+                            TextView receiver = findViewById(R.id.textViewSenderName);
+                            receiver.setText(((model.User) object).getName());
+                        }
+
+                        @Override
+                        public void onFailure(Exception e) {
+                            Log.d("MessageViewPage receiver", e.getMessage());
+                        }
+                    });
+                }
+
+                // 날짜
+                SimpleDateFormat newFormat = new SimpleDateFormat("dd/MM/yy HH:mm");
+                TextView date = findViewById(R.id.textViewDate);
+                date.setText(newFormat.format(message.getDate()));
+
+                // 내용
+                TextView content = findViewById(R.id.textViewMessageContent);
+                content.setText(message.getContent());
+
+                // TODO : 프로필 사진
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                Log.d("MessageViewPage message load", e.getMessage());
+            }
+        });
 
         // 뒤로가기 버튼
         Button back = findViewById(R.id.icon_back);
@@ -37,11 +101,7 @@ public class MessageViewPage extends AppCompatActivity {
             Utils.gotoPage(this, MessageBoxPage.class, null);
         });
 
-        // 삭제 버튼
-        Button delete = findViewById(R.id.icon_delete);
-        delete.setOnClickListener(view -> {
-//            message.deleteMsg(message.getReceiverId()==MainActivity.loginUser.getAccountId());
-        });
+
 
 
     }

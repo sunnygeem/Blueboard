@@ -49,18 +49,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/icon_back" />
 
-    <!-- 과목명 텍스트 -->
-    <TextView
-        android:id="@+id/textViewSubject"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="25dp"
-        android:layout_toEndOf="@+id/textViewTitle"
-        android:text="과목명"
-        android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@+id/textViewTitle"
-        app:layout_constraintTop_toBottomOf="@+id/icon_back" />
+<!--    &lt;!&ndash; 과목명 텍스트 &ndash;&gt;-->
+<!--    <TextView-->
+<!--        android:id="@+id/textViewSubject"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginLeft="20dp"-->
+<!--        android:layout_marginTop="25dp"-->
+<!--        android:layout_toEndOf="@+id/textViewTitle"-->
+<!--        android:text="과목명"-->
+<!--        android:textSize="12sp"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/textViewTitle"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/icon_back" />-->
 
     <!-- 프로필 사진 (동그라미) -->
     <ImageView

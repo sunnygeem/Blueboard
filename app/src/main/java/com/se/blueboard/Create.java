@@ -94,7 +94,7 @@ public class Create extends AppCompatActivity {
 
         buttonBackToLogin = (Button)findViewById(R.id.backToLogin);
         buttonBackToLogin.setOnClickListener(view->{
-                Utils.gotoPage(getApplicationContext(), LoginPage.class);
+                Utils.gotoPage(getApplicationContext(), LoginPage.class, null);
         });
     }
 
@@ -120,14 +120,14 @@ public class Create extends AppCompatActivity {
 
 
             buttonCompleteRegister.setOnClickListener(view -> {
-                User user = User.makeUser(null, id, name, inst, dept, null, null, null, null, null, null, Integer.parseInt(grd), Integer.parseInt(num));
+                User user = User.makeUser(null, id, name, inst, dept, null, null, null, null, null, null, Integer.parseInt(grd), Integer.parseInt(num), 0);
                 controller.sendUserData(user);
 
                  // 회원가입 완료
                 Toast.makeText(
                         getApplicationContext(), "회원가입이 완료되었습니다. 로그인 화면으로 돌아가 로그인하세요.", Toast.LENGTH_SHORT
                 ).show();
-                Utils.gotoPage(getApplicationContext(), LoginPage.class);
+                Utils.gotoPage(getApplicationContext(), LoginPage.class, null);
             });
 
         }
