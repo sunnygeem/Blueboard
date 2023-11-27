@@ -44,7 +44,7 @@
         android:layout_marginLeft="20dp"
         android:text="제목"
         android:textColor="#000000"
-        android:textSize="22sp"
+        android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/icon_back" />
@@ -81,7 +81,7 @@
         android:layout_marginLeft="75dp"
         android:layout_marginBottom="18dp"
         android:textColor="#000000"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageViewProfile"
         app:layout_constraintStart_toStartOf="@+id/imageViewProfile" />
@@ -96,7 +96,7 @@
         android:layout_marginLeft="10dp"
         android:text="발신자/수신자"
         android:textColor="#000000"
-        android:textSize="14sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageViewProfile"
         app:layout_constraintStart_toEndOf="@+id/textViewSenderOrReceiver" />
 
@@ -109,7 +109,7 @@
         android:layout_marginBottom="18dp"
         android:layout_marginLeft="10dp"
         android:text="날짜"
-        android:textSize="13sp"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageViewProfile"
         app:layout_constraintStart_toEndOf="@+id/textViewPersonName" />
 
@@ -148,7 +148,7 @@
         android:layout_below="@+id/dividerLine"
         android:text="메시지 내용"
         android:textColor="#000000"
-        android:textSize="16sp"
+        android:textSize="17sp"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
